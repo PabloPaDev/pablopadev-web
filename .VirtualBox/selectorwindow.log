@@ -1,0 +1,30 @@
+00:00:00.075851 VirtualBox GUI VM Selector Window 7.0.22 r165102 win.amd64 (Oct 14 2024 16:20:49) release log
+00:00:00.075853 Log opened 2024-10-27T19:26:39.828688500Z
+00:00:00.075854 Build Type: release
+00:00:00.075856 OS Product: Windows 11
+00:00:00.075857 OS Release: 10.0.22631
+00:00:00.075857 OS Service Pack: 
+00:00:00.117110 DMI Product Name: Thin GF63 12UC
+00:00:00.119304 DMI Product Version: REV:1.0
+00:00:00.119313 Firmware type: UEFI
+00:00:00.119513 Secure Boot: VERR_PRIVILEGE_NOT_HELD
+00:00:00.119525 Host RAM: 16085MB (15.7GB) total, 9348MB (9.1GB) available
+00:00:00.119528 Executable: C:\Program Files\Oracle\VirtualBox\VirtualBox.exe
+00:00:00.119529 Process ID: 15012
+00:00:00.119529 Package type: WINDOWS_64BITS_GENERIC
+00:00:00.119642 Qt version: 5.15.2
+00:00:00.120126 GUI: UIMediumEnumerator: Initial medium-enumeration finished!
+00:00:00.126612 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.126627 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:23:11.210898 GUI: UIMediumEnumerator: Medium with key={{ae833d0c-9b10-4f95-9020-df01915ec3f3}} created
+00:23:11.328880 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:23:22.055698 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:23:26.242969 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:23:34.359952 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:23:36.466713 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:23:39.382642 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:25:11.324671 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:29:30.428864 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:34:55.514447 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:44:13.154528 GUI: UICommon: Handling aboutToQuit request..
+00:44:14.195294 GUI: UICommon: aboutToQuit request handled!
