@@ -7,9 +7,32 @@ import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'PabloPaDev Web',
+  description: 'Portfolio de PabloPaDev: desarrollo web, APIs, bases de datos, automatización con IA y más. ¡Solicita tu presupuesto sin compromiso!',
+  generator: 'PabloPaDev',
+  openGraph: {
+    title: 'PabloPaDev Web',
+    description: 'Portfolio de PabloPaDev: desarrollo web, APIs, bases de datos, automatización con IA y más. ¡Solicita tu presupuesto sin compromiso!',
+    url: 'https://pablopadev-web.vercel.app/',
+    siteName: 'PabloPaDev Web',
+    images: [
+      {
+        url: '/placeholder-logo.png',
+        width: 400,
+        height: 400,
+        alt: 'PabloPaDev Logo',
+      },
+    ],
+    locale: 'es_ES',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'PabloPaDev Web',
+    description: 'Portfolio de PabloPaDev: desarrollo web, APIs, bases de datos, automatización con IA y más. ¡Solicita tu presupuesto sin compromiso!',
+    images: ['/placeholder-logo.png'],
+    creator: '@PabloPaDev',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
