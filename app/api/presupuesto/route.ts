@@ -9,6 +9,11 @@ export async function POST(request: Request) {
             return NextResponse.json({ ok: false, mensaje: "Faltan datos obligatorios." }, { status: 400 });
         }
 
+        // Depuración de variables de entorno
+        console.log("EMAIL_USER:", process.env.EMAIL_USER);
+        console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "EXISTS" : "MISSING");
+        console.log("EMAIL_TO:", process.env.EMAIL_TO);
+
         // Configurar el transporter de Nodemailer
         const transporter = nodemailer.createTransport({
             service: "gmail",
