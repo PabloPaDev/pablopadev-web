@@ -66,6 +66,7 @@ export async function POST(request: Request) {
 
         return NextResponse.json({ ok: true, mensaje: "¡Solicitud recibida! Te responderé lo antes posible." });
     } catch (error) {
+        console.error("Error enviando email:", error); // Log para debug en Vercel
         return NextResponse.json({ ok: false, mensaje: "Error enviando el email. Intenta de nuevo o contacta por WhatsApp." }, { status: 500 });
     }
 } 
