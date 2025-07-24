@@ -66,6 +66,10 @@ export function HeroSection() {
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
                         <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-lg px-10 py-4 hover:scale-105 transition-all">
                             <motion.button
+                                onClick={() => {
+                                    const section = document.getElementById('servicios');
+                                    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }}
                                 onMouseEnter={() => {
                                     if (rocketRef.current) {
                                         const rect = rocketRef.current.getBoundingClientRect();
@@ -147,26 +151,8 @@ export function HeroSection() {
                                     title="Calendly"
                                     style={{ minWidth: 320, border: 'none' }}
                                 ></iframe>
-                                <DialogClose asChild>
-                                    <button className="absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl">×</button>
-                                </DialogClose>
                             </DialogContent>
                         </Dialog>
-                    </div>
-                    {/* Stats */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-                        <div className="p-6 rounded-2xl bg-gray-800/80 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105">
-                            <div className="text-3xl font-bold text-white mb-2">15+</div>
-                            <div className="text-gray-400">Proyectos Completados</div>
-                        </div>
-                        <div className="p-6 rounded-2xl bg-gray-800/80 backdrop-blur-sm border border-gray-700 hover:border-purple-500/50 transition-all hover:scale-105">
-                            <div className="text-3xl font-bold text-white mb-2">2+</div>
-                            <div className="text-gray-400">Años Programando</div>
-                        </div>
-                        <div className="p-6 rounded-2xl bg-gray-800/80 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 transition-all hover:scale-105">
-                            <div className="text-3xl font-bold text-white mb-2">100%</div>
-                            <div className="text-gray-400">Pasión por el Código</div>
-                        </div>
                     </div>
                 </div>
             </div>

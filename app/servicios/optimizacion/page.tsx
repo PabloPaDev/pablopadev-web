@@ -42,7 +42,7 @@ export default function OptimizacionPage() {
             <div className="absolute inset-0 bg-black/70 z-0"></div>
             <div className="container mx-auto px-4 lg:px-6 max-w-3xl relative z-10 bg-gray-900/80 border border-blue-700 rounded-2xl shadow-2xl backdrop-blur-md p-8">
                 <div className="mb-8">
-                    <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold text-base transition-colors">
+                    <Link href="/?scroll=servicios" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-200 font-semibold text-base transition-colors">
                         <ArrowLeft className="w-5 h-5" /> Volver
                     </Link>
                 </div>

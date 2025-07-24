@@ -7,7 +7,7 @@ export default function AutomatizacionIAPage() {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 py-20 px-4">
             <div className="w-full max-w-md bg-gray-800/90 border border-yellow-400 rounded-2xl shadow-2xl p-8 flex flex-col items-center">
-                <Link href="/" className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold text-base mb-6 transition-colors">
+                <Link href="/?scroll=servicios" className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold text-base mb-6 transition-colors">
                     <ArrowLeft className="w-5 h-5" /> Volver
                 </Link>
                 <Sparkles className="w-12 h-12 text-yellow-400 mb-4" />

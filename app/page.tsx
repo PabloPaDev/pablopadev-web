@@ -64,6 +64,30 @@ export default function HomePage() {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#servicios') {
+      setTimeout(() => {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+        window.scrollBy({ top: -80, behavior: 'smooth' });
+      }, 400);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('scroll') === 'servicios') {
+        setTimeout(() => {
+          const section = document.getElementById('servicios');
+          if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Limpiar la query de la URL
+          const url = window.location.origin + window.location.pathname;
+          window.history.replaceState({}, '', url);
+        }, 200);
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Dynamic Banner */}
@@ -169,7 +193,7 @@ export default function HomePage() {
               Servicios especializados en desarrollo web moderno y gestión de datos
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {[
               {
                 title: "Desarrollo Web",
@@ -211,12 +235,6 @@ export default function HomePage() {
                 color: "from-cyan-500 to-blue-500",
               },
               {
-                title: "Integración de APIs",
-                description: "Conexión con servicios externos, pagos, autenticación y APIs de terceros",
-                icon: Layers,
-                color: "from-indigo-500 to-purple-500",
-              },
-              {
                 title: "Apps",
                 description: "Desarrollo de aplicaciones móviles multiplataforma (Android/iOS) modernas y funcionales.",
                 icon: Smartphone,
@@ -228,7 +246,7 @@ export default function HomePage() {
               const cardContent = (
                 <Card
                   key={service.title}
-                  className="bg-gray-800 border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 group cursor-pointer"
+                  className={"bg-gray-800 border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 group cursor-pointer w-full h-full flex flex-col justify-between"}
                 >
                   <CardHeader>
                     <div
@@ -248,42 +266,49 @@ export default function HomePage() {
               if (service.title === "Bases de Datos") {
                 return (
                   <Link href="/servicios/base-datos" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }}>{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "Redes Sociales") {
                 return (
                   <Link href="/servicios/redes-sociales" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }}>{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "Optimización") {
                 return (
                   <Link href="/servicios/optimizacion" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }}>{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "Apps") {
                 return (
                   <Link href="/servicios/apps" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }}>{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "Automatización con IA") {
                 return (
                   <Link href="/servicios/automatizacion-ia" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }}>{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
                   </Link>
                 );
               }
-              if (service.title === "APIs y Backend" || service.title === "Integración de APIs" || service.title === "Aplicaciones Web") {
+              if (service.title === "Desarrollo Web") {
                 return (
                   <Link href="/servicios/desarrollo-web" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }}>{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
+                  </Link>
+                );
+              }
+              if (service.title === "APIs y Backend" || service.title === "Aplicaciones Web") {
+                return (
+                  <Link href="/servicios/desarrollo-web" key={service.title} legacyBehavior>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
                   </Link>
                 );
               }
