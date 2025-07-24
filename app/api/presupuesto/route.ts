@@ -1,5 +1,8 @@
+// Forzar redeploy: migración a Resend
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY || "re_F469PnJy_qfcVzdBfXP9ALkGa1MKP2wWv");
 
 export async function POST(request: Request) {
     try {
@@ -9,24 +12,10 @@ export async function POST(request: Request) {
             return NextResponse.json({ ok: false, mensaje: "Faltan datos obligatorios." }, { status: 400 });
         }
 
-        // Depuración de variables de entorno
-        console.log("EMAIL_USER:", process.env.EMAIL_USER);
-        console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "EXISTS" : "MISSING");
-        console.log("EMAIL_TO:", process.env.EMAIL_TO);
-
-        // Configurar el transporter de Nodemailer
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-
         // Email para ti
         const mailOptions = {
-            from: `PabloPaDev <${process.env.EMAIL_USER}>`,
-            to: process.env.EMAIL_TO,
+            from: "onboarding@resend.dev",
+            to: process.env.EMAIL_TO || "pablopadev@gmail.com",
             subject: `Nueva solicitud de presupuesto de ${nombre}`,
             html: `
         <h2>Solicitud de presupuesto</h2>
@@ -37,9 +26,10 @@ export async function POST(request: Request) {
         <p><b>Descripción:</b> ${descripcion || "(Sin descripción)"}</p>
         <p><b>Presupuesto estimado:</b> <span style="color:#2563eb;font-weight:bold;">${presupuesto}€</span></p>
       `,
+            text: `Solicitud de presupuesto\nNombre: ${nombre}\nEmail: ${email}\nTipo de proyecto: ${tipoProyecto}\nExtras: ${extras && extras.length ? extras.join(", ") : "Ninguno"}\nDescripción: ${descripcion || "(Sin descripción)"}\nPresupuesto estimado: ${presupuesto}€`
         };
 
-        await transporter.sendMail(mailOptions);
+        await resend.emails.send(mailOptions);
 
         // Email de confirmación al cliente personalizado
         let servicio = "tu proyecto";
@@ -53,8 +43,8 @@ export async function POST(request: Request) {
             }
         }
         const anticipo = Math.round((presupuesto * 0.1) * 100) / 100;
-        await transporter.sendMail({
-            from: `PabloPaDev <${process.env.EMAIL_USER}>`,
+        await resend.emails.send({
+            from: "onboarding@resend.dev",
             to: email,
             subject: `¡Hemos recibido tu solicitud de presupuesto para ${servicio}!`,
             html: `
@@ -66,12 +56,13 @@ export async function POST(request: Request) {
             <p><b>Presupuesto estimado:</b> ${presupuesto}€</p>
             <p>Si tienes cualquier duda, puedes responder a este correo o escribirme por WhatsApp.</p>
             <p>¡Gracias por confiar en mi trabajo!</p>
-          `
+          `,
+            text: `¡Hola ${nombre}!\nHe recibido tu solicitud de presupuesto para ${servicio} y me pondré a trabajar en ella de inmediato.\nPara comenzar el desarrollo, solo tienes que realizar un Bizum del 10% del presupuesto (${anticipo} €) al número +34 657 285 571.\nCuando reciba el anticipo, te avisaré y comenzamos con tu proyecto. El resto se abona al finalizar el trabajo.\nTe mantendré informado/a de cada paso y en un plazo máximo de 15 días tendrás tu pedido listo.\nPresupuesto estimado: ${presupuesto}€\nSi tienes cualquier duda, puedes responder a este correo o escribirme por WhatsApp.\n¡Gracias por confiar en mi trabajo!`
         });
 
         return NextResponse.json({ ok: true, mensaje: "¡Solicitud recibida! Te responderé lo antes posible." });
     } catch (error) {
-        console.error("Error enviando email:", error); // Log para debug en Vercel
+        console.error("Error enviando email:", error);
         return NextResponse.json({ ok: false, mensaje: "Error enviando el email. Intenta de nuevo o contacta por WhatsApp." }, { status: 500 });
     }
 } 
