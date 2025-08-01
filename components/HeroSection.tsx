@@ -46,7 +46,7 @@ export function HeroSection() {
                 <div className="max-w-4xl mx-auto text-center">
                     <Badge className="mb-6 bg-blue-500/20 text-blue-300 border-blue-500/30 px-6 py-2">
                         <Sparkles className="w-4 h-4 mr-2" />
-                        Desarrollador Full Stack Junior
+                        Desarrollador Full Stack
                     </Badge>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
                         Creo

@@ -1,0 +1,45 @@
+{
+    "name": "Pablo PaDev - Desarrollador Full Stack",
+    "short_name": "Pablo PaDev",
+    "description": "Desarrollador Full Stack Junior especializado en backend con Python y Flask. Desarrollo de APIs, aplicaciones web y automatización con IA.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "any",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/logo.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "categories": [
+        "business",
+        "productivity",
+        "technology"
+    ],
+    "lang": "es",
+    "dir": "ltr",
+    "scope": "/",
+    "prefer_related_applications": false
+}

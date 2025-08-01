@@ -10,7 +10,7 @@ function AgusBot() {
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState([
         {
-            from: "bot", text: "¡Hola! Soy Agus 🐶, tu asistente. ¿En qué puedo ayudarte?", options: [
+            from: "bot", text: "¡Hola! Soy Agus, tu asistente. ¿En qué puedo ayudarte?", options: [
                 "¿Qué servicios ofreces?",
                 "¿Cómo puedo contactarte?",
                 "¿Cuáles son tus horarios?",
@@ -48,7 +48,7 @@ function AgusBot() {
             reply = "Ofrezco desarrollo web, APIs, bases de datos, automatización con IA, apps y más. ¡Pregunta por el que te interese!";
             options = ["¿Cómo puedo contactarte?", "¿Cuáles son tus horarios?", "¿Cuánto cuesta un proyecto?"];
         } else if (q.includes("agus")) {
-            reply = "¡Soy Agus, el bulldog más listo del código! 🐶";
+            reply = "¡Soy Agus, tu asistente virtual!";
             options = ["¿Qué servicios ofreces?", "¿Cómo puedo contactarte?"];
         }
         setTimeout(() => setMessages((msgs) => [...msgs, { from: "bot", text: reply, options }]), 700);
@@ -58,15 +58,17 @@ function AgusBot() {
         <>
             <button
                 onClick={() => setOpen((o) => !o)}
-                className="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center text-3xl border-4 border-white"
-                aria-label="Abrir chat Agus"
+                className="fixed bottom-6 right-6 z-50 bg-white hover:bg-gray-100 rounded-full shadow-lg w-16 h-16 flex items-center justify-center text-3xl border-4 border-white"
+                aria-label="Abrir chat"
             >
-                <Image src="/agus.jpg" alt="AgusBot" width={48} height={48} className="rounded-full object-cover" />
+                <Image src="/logo.png" alt="PabloPaDev Logo" width={48} height={48} className="rounded-full object-cover" />
             </button>
             {open && (
                 <div className="fixed bottom-24 right-6 z-50 w-80 max-w-[90vw] bg-white rounded-2xl shadow-2xl border border-blue-200 flex flex-col overflow-hidden animate-fade-in">
                     <div className="flex items-center gap-2 p-4 bg-blue-600 text-white">
-                        <Image src="/agus.jpg" alt="AgusBot" width={36} height={36} className="rounded-full object-cover" />
+                        <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                            <Image src="/logo.png" alt="PabloPaDev Logo" width={36} height={36} className="rounded-full object-cover" />
+                        </div>
                         <span className="font-bold">AgusBot</span>
                         <button onClick={() => setOpen(false)} className="ml-auto text-white text-xl hover:text-blue-200">×</button>
                     </div>
@@ -105,8 +107,8 @@ export default function Header() {
             <header className="border-b border-gray-800 bg-gray-900/95 backdrop-blur-md sticky top-0 z-50">
                 <div className="container mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
                     <Link href="/" className="flex items-center space-x-2 group">
-                        <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <Code2 className="w-5 h-5 text-white" />
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
+                            <Image src="/logo.png?v=2" alt="PabloPaDev Logo" width={32} height={32} className="object-cover brightness-0 invert" />
                         </div>
                         <span className="text-xl font-bold text-white">PabloPaDev</span>
                     </Link>

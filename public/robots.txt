@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pablopadev.es/sitemap.xml
+
+# Crawl-delay para ser respetuoso con el servidor
+Crawl-delay: 1
+
+# Permitir acceso a recursos importantes
+Allow: /favicon.ico
+Allow: /manifest.json
+Allow: /apple-touch-icon.png
+Allow: /browserconfig.xml
+
+# Bloquear archivos innecesarios
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+Disallow: /.env
+Disallow: /.git 
