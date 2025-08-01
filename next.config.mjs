@@ -14,10 +14,6 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 año
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Optimización de calidad
-    quality: 85,
-    // Compresión avanzada
-    compress: true,
   },
   // Compresión y optimización
   compress: true,
@@ -27,15 +23,6 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['lucide-react', 'framer-motion'],
-    // Optimización de imágenes
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
   },
   // Optimización de webpack
   webpack: (config, { dev, isServer }) => {
@@ -58,24 +45,10 @@ const nextConfig = {
         },
       };
     }
-    
-    // Optimización de imágenes
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|svg)$/i,
-      use: [
-        {
-          loader: 'url-loader',
-          options: {
-            limit: 8192,
-            fallback: 'file-loader',
-          },
-        },
-      ],
-    });
-    
+
     return config;
   },
-  // Headers de seguridad y caché
+  // Headers de seguridad
   async headers() {
     return [
       {
@@ -97,47 +70,7 @@ const nextConfig = {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
-          },
         ],
-      },
-      {
-        source: '/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/:path*.(js|css|png|jpg|jpeg|gif|webp|svg|ico)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/:path*.(woff|woff2|ttf|eot)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ]
-  },
-  // Optimización de PWA
-  async rewrites() {
-    return [
-      {
-        source: '/manifest.json',
-        destination: '/api/manifest',
       },
     ]
   },
