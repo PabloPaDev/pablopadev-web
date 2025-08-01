@@ -26,7 +26,6 @@ body {
 /* Estilos optimizados para el logo en PWA */
 @media (display-mode: standalone) {
   img[src*="logo.png"] {
-    filter: brightness(0) invert(1);
     background-color: white;
     border-radius: 50%;
     padding: 8px;
@@ -35,7 +34,6 @@ body {
 
 /* Estilos optimizados para iconos de app móvil */
 .app-icon {
-  filter: brightness(0) invert(1);
   background-color: white;
   border-radius: 50%;
   padding: 8px;

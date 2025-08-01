@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'PabloPaDev',
+    title: 'PabloPaDev - Desarrollador Full Stack',
     description: 'Desarrollador Full Stack Junior especializado en backend con Python y Flask. Desarrollo de APIs, aplicaciones web con React, bases de datos y automatización con IA.',
     url: 'https://pablopadev.es',
     siteName: 'PabloPaDev',
     images: [
       {
-        url: '/logo.png',
+        url: 'https://pablopadev.es/logo.png',
         width: 512,
         height: 512,
         alt: 'Pablo PaDev - Desarrollador Full Stack',
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PabloPaDev',
+    title: 'PabloPaDev - Desarrollador Full Stack',
     description: 'Desarrollador Full Stack Junior especializado en backend con Python y Flask. Desarrollo de APIs, aplicaciones web con React, bases de datos y automatización con IA.',
-    images: ['/logo.png'],
+    images: ['https://pablopadev.es/logo.png'],
     creator: '@PabloPaDev',
     site: '@PabloPaDev',
   },
