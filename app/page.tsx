@@ -91,9 +91,9 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-900 no-scroll-horizontal">
       {/* Dynamic Banner */}
-      <div className="bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-cyan-600/20 border-b border-gray-800">
+      <div className="bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-cyan-600/20 border-b border-gray-800 no-scroll-horizontal">
         <div className="container mx-auto px-4 lg:px-6 py-4">
           <div className="flex items-center justify-center space-x-4 text-center">
             <div className="flex items-center space-x-2">
@@ -112,7 +112,7 @@ export default function HomePage() {
       {!showOnlyServices && (
         <>
           {/* Hero Section */}
-          <div className="relative">
+          <div className="relative no-scroll-horizontal">
             <HeroSection />
             <div className="absolute left-1/2 -bottom-10 transform -translate-x-1/2 z-10">
               <motion.div
@@ -126,7 +126,7 @@ export default function HomePage() {
             </div>
           </div>
           {/* Tech Stack */}
-          <section className="py-8 bg-[#0f1621]">
+          <section className="py-8 bg-[#0f1621] no-scroll-horizontal">
             <Suspense fallback={<div className="text-center text-white">Cargando...</div>}>
               <LazyTooltipProvider>
                 <div className="container mx-auto px-4 lg:px-6">
@@ -157,13 +157,13 @@ export default function HomePage() {
                       >
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <div className="flex flex-col items-center p-3 rounded-xl bg-gray-800 border border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 cursor-pointer">
+                            <div className="flex flex-col items-center p-3 rounded-xl bg-gray-800 border border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 cursor-pointer touch-target">
                               <div
                                 className="w-10 h-10 bg-gray-700 rounded-xl flex items-center justify-center mb-2 group-hover:scale-105 transition-all"
                               >
                                 <tech.icon className="w-5 h-5 text-white" />
                               </div>
-                              <span className="text-gray-300 text-xs font-medium group-hover:text-white transition-colors">
+                              <span className="text-gray-300 text-xs font-medium group-hover:text-white transition-colors text-center break-words">
                                 {tech.name}
                               </span>
                             </div>
@@ -186,7 +186,7 @@ export default function HomePage() {
       )}
 
       {/* Services Section */}
-      <section id="servicios" className="py-20">
+      <section id="servicios" className="py-20 no-scroll-horizontal">
         <div className="container mx-auto px-4 lg:px-6 flex flex-col items-center justify-center min-h-[60vh]">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -197,7 +197,7 @@ export default function HomePage() {
               Servicios especializados en desarrollo web moderno y gestión de datos
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch w-full max-w-7xl">
             {[
               {
                 title: "Desarrollo Web",
@@ -250,7 +250,7 @@ export default function HomePage() {
               const cardContent = (
                 <Card
                   key={service.title}
-                  className={"bg-gray-800 border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 group cursor-pointer w-full h-full flex flex-col justify-between"}
+                  className={"bg-gray-800 border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 group cursor-pointer w-full h-full flex flex-col justify-between touch-target"}
                 >
                   <CardHeader>
                     <div
@@ -270,49 +270,49 @@ export default function HomePage() {
               if (service.title === "Bases de Datos") {
                 return (
                   <Link href="/servicios/base-datos" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto touch-target">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "Redes Sociales") {
                 return (
                   <Link href="/servicios/redes-sociales" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto touch-target">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "Optimización") {
                 return (
                   <Link href="/servicios/optimizacion" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto touch-target">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "Apps") {
                 return (
                   <Link href="/servicios/apps" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto touch-target">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "Automatización con IA") {
                 return (
                   <Link href="/servicios/automatizacion-ia" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto touch-target">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "Desarrollo Web") {
                 return (
                   <Link href="/servicios/desarrollo-web" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto touch-target">{cardContent}</a>
                   </Link>
                 );
               }
               if (service.title === "APIs y Backend" || service.title === "Aplicaciones Web") {
                 return (
                   <Link href="/servicios/desarrollo-web" key={service.title} legacyBehavior>
-                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto">{cardContent}</a>
+                    <a style={{ textDecoration: 'none' }} className="w-full h-[240px] min-w-[260px] max-w-[340px] flex flex-col justify-between mx-auto touch-target">{cardContent}</a>
                   </Link>
                 );
               }
@@ -323,7 +323,7 @@ export default function HomePage() {
       </section>
 
       {/* About Section */}
-      <section id="sobre-mi" className="py-20">
+      <section id="sobre-mi" className="py-20 no-scroll-horizontal">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -374,7 +374,7 @@ export default function HomePage() {
                 ].map((skill) => (
                   <div
                     key={skill.title}
-                    className="flex items-center space-x-3 p-4 rounded-xl bg-gray-800 border border-gray-700 hover:border-gray-600 transition-all group hover:scale-105"
+                    className="flex items-center space-x-3 p-4 rounded-xl bg-gray-800 border border-gray-700 hover:border-gray-600 transition-all group hover:scale-105 touch-target"
                   >
                     <div
                       className={`w-12 h-12 bg-gradient-to-r ${skill.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-all`}
@@ -399,7 +399,7 @@ export default function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button className="bg-yellow-400 hover:bg-yellow-500 text-black flex items-center gap-2 px-6 py-3 text-base font-semibold shadow-lg">
+                  <Button className="bg-yellow-400 hover:bg-yellow-500 text-black flex items-center gap-2 px-6 py-3 text-base font-semibold shadow-lg touch-target">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M4 17c0 1.657 2.686 3 6 3s6-1.343 6-3" stroke="#a16207" strokeWidth="2" strokeLinecap="round" /><path d="M20 8c0 4.418-3.582 8-8 8s-8-3.582-8-8V7a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v1Z" fill="#fde68a" stroke="#a16207" strokeWidth="2" /></svg>
                     Invítame a un café
                   </Button>
@@ -439,7 +439,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-gray-800/30">
+      <section className="py-20 bg-gray-800/30 no-scroll-horizontal">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -475,7 +475,7 @@ export default function HomePage() {
             ].map((testimonial) => (
               <Card
                 key={testimonial.name}
-                className="bg-gray-800 border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 group"
+                className="bg-gray-800 border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 group touch-target"
               >
                 <CardHeader>
                   <div className="flex items-center space-x-4">
@@ -509,11 +509,11 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer id="contacto" className="bg-gray-900 border-t border-gray-800">
+      <footer id="contacto" className="bg-gray-900 border-t border-gray-800 no-scroll-horizontal">
         <div className="container mx-auto px-4 lg:px-6 py-12">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <Link href="/" className="flex items-center space-x-2 mb-4">
+              <Link href="/" className="flex items-center space-x-2 mb-4 touch-target">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden">
                   <Image
                     src="/logo.png"
@@ -529,13 +529,13 @@ export default function HomePage() {
               </Link>
               <p className="text-gray-400 mb-4">Desarrollador Full Stack Junior especializado en web moderno</p>
               <div className="flex space-x-4">
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors touch-target">
                   <Twitter className="w-5 h-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors touch-target">
                   <Github className="w-5 h-5" />
                 </Link>
-                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors touch-target">
                   <Linkedin className="w-5 h-5" />
                 </Link>
               </div>
@@ -546,7 +546,7 @@ export default function HomePage() {
               <ul className="space-y-2">
                 {["Aplicaciones Web", "APIs y Backend", "Bases de Datos", "Optimización"].map((service) => (
                   <li key={service}>
-                    <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <Link href="#" className="text-gray-400 hover:text-white transition-colors touch-target">
                       {service}
                     </Link>
                   </li>
@@ -559,7 +559,7 @@ export default function HomePage() {
               <ul className="space-y-2">
                 {["React & Next.js", "Node.js & Express", "PostgreSQL & MongoDB", "TypeScript", "Java", "Python", "Flask"].map((tech) => (
                   <li key={tech}>
-                    <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <Link href="#" className="text-gray-400 hover:text-white transition-colors touch-target">
                       {tech}
                     </Link>
                   </li>
@@ -579,12 +579,12 @@ export default function HomePage() {
                   +34 657 285 571
                 </li>
                 <li>
-                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <Link href="#" className="text-gray-400 hover:text-white transition-colors touch-target">
                     Política de Privacidad
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <Link href="#" className="text-gray-400 hover:text-white transition-colors touch-target">
                     Términos de Servicio
                   </Link>
                 </li>

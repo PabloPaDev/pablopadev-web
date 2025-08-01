@@ -58,9 +58,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'tu-codigo-de-verificacion-google',
-    yandex: 'tu-codigo-de-verificacion-yandex',
-    yahoo: 'tu-codigo-de-verificacion-yahoo',
+    // Códigos de verificación reales (reemplazar cuando tengas los códigos)
+    // google: 'tu-codigo-de-verificacion-google',
+    // yandex: 'tu-codigo-de-verificacion-yandex',
+    // yahoo: 'tu-codigo-de-verificacion-yahoo',
   },
   category: 'technology',
 }
@@ -69,6 +70,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <head>
+        {/* Viewport optimizado para navegadores embebidos */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+
+        {/* Meta tags específicos para navegadores embebidos */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
         {/* Preload de recursos críticos */}
         <link rel="preload" href="/logo.png" as="image" type="image/png" />
         <link rel="preload" href="/mi-foto.jpg" as="image" type="image/jpeg" />
@@ -82,10 +92,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://coff.ee" crossOrigin="anonymous" />
 
-        {/* Meta tags de rendimiento */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-
         {/* Favicon optimizado */}
         <link rel="icon" type="image/png" sizes="32x32" href="/logo.png?v=2" />
         <link rel="icon" type="image/png" sizes="16x16" href="/logo.png?v=2" />
@@ -93,9 +99,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
 
         {/* Theme color para PWA */}
-        <meta name="theme-color" content="#ffffff" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="theme-color" content="#0f1621" />
+        <meta name="msapplication-TileColor" content="#0f1621" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+
+        {/* Meta tags para navegadores embebidos */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="format-detection" content="date=no" />
+        <meta name="format-detection" content="address=no" />
+        <meta name="format-detection" content="email=no" />
       </head>
       <body>
         <Header />

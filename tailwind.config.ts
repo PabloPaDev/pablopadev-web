@@ -102,24 +102,7 @@ const config: Config = {
     },
   },
   plugins: [],
-  // Optimización de purga
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: [
-      './pages/**/*.{js,ts,jsx,tsx}',
-      './components/**/*.{js,ts,jsx,tsx}',
-      './app/**/*.{js,ts,jsx,tsx}',
-    ],
-    options: {
-      safelist: [
-        'animate-fade-in',
-        'animate-slide-up',
-        'animate-scale-in',
-      ],
-    },
-  },
-  // Optimización de JIT
-  mode: 'jit',
+  // Configuración moderna de Tailwind CSS v3
   darkMode: 'class',
 };
 
