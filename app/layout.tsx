@@ -1,9 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Code2, Github } from "lucide-react";
-import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
@@ -72,23 +68,38 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
+      <head>
+        {/* Preload de recursos críticos */}
+        <link rel="preload" href="/logo.png" as="image" type="image/png" />
+        <link rel="preload" href="/mi-foto.jpg" as="image" type="image/jpeg" />
+        <link rel="preload" href="/manifest.json" as="application/manifest" />
+        
+        {/* DNS prefetch para recursos externos */}
+        <link rel="dns-prefetch" href="//assets.calendly.com" />
+        <link rel="dns-prefetch" href="//coff.ee" />
+        
+        {/* Preconnect para recursos críticos */}
+        <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://coff.ee" crossOrigin="anonymous" />
+        
+        {/* Meta tags de rendimiento */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        
+        {/* Favicon optimizado */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo.png?v=2" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/logo.png?v=2" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo-white-bg.png" />
+        <link rel="manifest" href="/manifest.json" />
+        
+        {/* Theme color para PWA */}
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+      </head>
       <body>
         <Header />
         {children}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var d = document, s = d.createElement('script');
-                s.type = 'text/javascript';
-                s.async = true;
-                s.src = 'https://assets.calendly.com/assets/external/widget.js';
-                var x = d.getElementsByTagName('script')[0];
-                x.parentNode.insertBefore(s, x);
-              })();
-            `
-          }}
-        />
       </body>
     </html>
   )

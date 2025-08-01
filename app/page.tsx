@@ -27,12 +27,14 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-// HeroButtons solo se usa dentro de HeroSection
 import { HeroSection } from "@/components/HeroSection";
 import * as framerMotion from "framer-motion";
 const motion = framerMotion.motion;
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense, lazy } from "react";
+
+// Lazy load de componentes pesados
+const LazyTooltipProvider = lazy(() => import("@/components/ui/tooltip").then(module => ({ default: module.TooltipProvider })));
 
 export default function HomePage() {
   const [showOnlyServices, setShowOnlyServices] = useState(false);
@@ -125,58 +127,60 @@ export default function HomePage() {
           </div>
           {/* Tech Stack */}
           <section className="py-8 bg-[#0f1621]">
-            <TooltipProvider>
-              <div className="container mx-auto px-4 lg:px-6">
-                <div className="text-center mb-6">
-                  <h2 className="text-xl md:text-2xl font-bold mb-2 text-white drop-shadow-2xl">
-                    <span>Stack </span>
-                    <span className="text-blue-400">Tecnológico</span>
-                  </h2>
-                  <p className="text-gray-400 text-sm">Herramientas modernas para desarrollo web completo</p>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3">
-                  {[
-                    { name: "React", icon: Code2, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Librería de JavaScript para construir interfaces de usuario interactivas y modernas." },
-                    { name: "Next.js", icon: Layout, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Framework para React que permite SSR, rutas y optimización avanzada." },
-                    { name: "Node.js", icon: Server, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Entorno de ejecución para JavaScript en el servidor, ideal para APIs rápidas." },
-                    { name: "PostgreSQL", icon: Database, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Base de datos relacional potente y de código abierto." },
-                    { name: "TypeScript", icon: Terminal, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Superset de JavaScript que añade tipado estático para mayor robustez." },
-                    { name: "Python & Flask", icon: Terminal, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Lenguaje y micro-framework para crear APIs y automatizaciones rápidas." },
-                    { name: "Automatización IA", icon: Sparkles, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Uso de inteligencia artificial para optimizar procesos y tareas." },
-                  ].map((tech, i) => (
-                    <motion.div
-                      key={tech.name}
-                      className="group"
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.5, delay: i * 0.08 }}
-                    >
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <div className="flex flex-col items-center p-3 rounded-xl bg-gray-800 border border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 cursor-pointer">
-                            <div
-                              className="w-10 h-10 bg-gray-700 rounded-xl flex items-center justify-center mb-2 group-hover:scale-105 transition-all"
-                            >
-                              <tech.icon className="w-5 h-5 text-white" />
+            <Suspense fallback={<div className="text-center text-white">Cargando...</div>}>
+              <LazyTooltipProvider>
+                <div className="container mx-auto px-4 lg:px-6">
+                  <div className="text-center mb-6">
+                    <h2 className="text-xl md:text-2xl font-bold mb-2 text-white drop-shadow-2xl">
+                      <span>Stack </span>
+                      <span className="text-blue-400">Tecnológico</span>
+                    </h2>
+                    <p className="text-gray-400 text-sm">Herramientas modernas para desarrollo web completo</p>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3">
+                    {[
+                      { name: "React", icon: Code2, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Librería de JavaScript para construir interfaces de usuario interactivas y modernas." },
+                      { name: "Next.js", icon: Layout, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Framework para React que permite SSR, rutas y optimización avanzada." },
+                      { name: "Node.js", icon: Server, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Entorno de ejecución para JavaScript en el servidor, ideal para APIs rápidas." },
+                      { name: "PostgreSQL", icon: Database, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Base de datos relacional potente y de código abierto." },
+                      { name: "TypeScript", icon: Terminal, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Superset de JavaScript que añade tipado estático para mayor robustez." },
+                      { name: "Python & Flask", icon: Terminal, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Lenguaje y micro-framework para crear APIs y automatizaciones rápidas." },
+                      { name: "Automatización IA", icon: Sparkles, color: "from-[hsl(37,44%,60%)] to-[hsl(82,39%,36%)]", desc: "Uso de inteligencia artificial para optimizar procesos y tareas." },
+                    ].map((tech, i) => (
+                      <motion.div
+                        key={tech.name}
+                        className="group"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.5, delay: i * 0.08 }}
+                      >
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <div className="flex flex-col items-center p-3 rounded-xl bg-gray-800 border border-gray-700 hover:border-blue-500/50 transition-all hover:scale-105 cursor-pointer">
+                              <div
+                                className="w-10 h-10 bg-gray-700 rounded-xl flex items-center justify-center mb-2 group-hover:scale-105 transition-all"
+                              >
+                                <tech.icon className="w-5 h-5 text-white" />
+                              </div>
+                              <span className="text-gray-300 text-xs font-medium group-hover:text-white transition-colors">
+                                {tech.name}
+                              </span>
                             </div>
-                            <span className="text-gray-300 text-xs font-medium group-hover:text-white transition-colors">
-                              {tech.name}
-                            </span>
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent
-                          side="top"
-                          className="max-w-xs text-center bg-gradient-to-br from-blue-900 to-cyan-800 text-white rounded-xl shadow-xl px-6 py-4 border border-blue-400 animate-in fade-in zoom-in"
-                        >
-                          <span className="text-xs text-blue-100">{tech.desc}</span>
-                        </TooltipContent>
-                      </Tooltip>
-                    </motion.div>
-                  ))}
+                          </TooltipTrigger>
+                          <TooltipContent
+                            side="top"
+                            className="max-w-xs text-center bg-gradient-to-br from-blue-900 to-cyan-800 text-white rounded-xl shadow-xl px-6 py-4 border border-blue-400 animate-in fade-in zoom-in"
+                          >
+                            <span className="text-xs text-blue-100">{tech.desc}</span>
+                          </TooltipContent>
+                        </Tooltip>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </TooltipProvider>
+              </LazyTooltipProvider>
+            </Suspense>
           </section>
         </>
       )}
@@ -417,6 +421,11 @@ export default function HomePage() {
                     width={500}
                     height={500}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={false}
                   />
                 </div>
                 <div className="absolute -bottom-6 -right-6 bg-gray-800 p-6 rounded-2xl border border-gray-700 backdrop-blur-sm hover:scale-105 transition-transform">
@@ -506,7 +515,15 @@ export default function HomePage() {
             <div>
               <Link href="/" className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden">
-                  <Image src="/logo.png" alt="PabloPaDev Logo" width={32} height={32} className="object-cover brightness-0 invert" />
+                  <Image
+                    src="/logo.png"
+                    alt="PabloPaDev Logo"
+                    width={32}
+                    height={32}
+                    className="object-cover brightness-0 invert"
+                    loading="lazy"
+                    sizes="32px"
+                  />
                 </div>
                 <span className="text-xl font-bold text-white">PabloPaDev</span>
               </Link>

@@ -2,11 +2,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Code2, Github } from "lucide-react";
-import { useState } from "react";
+import { Github } from "lucide-react";
+import { useState, memo } from "react";
 import Image from "next/image";
 
-function AgusBot() {
+// Memoización del componente AgusBot para evitar re-renders innecesarios
+const AgusBot = memo(function AgusBot() {
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState([
         {
@@ -61,13 +62,29 @@ function AgusBot() {
                 className="fixed bottom-6 right-6 z-50 bg-white hover:bg-gray-100 rounded-full shadow-lg w-16 h-16 flex items-center justify-center text-3xl border-4 border-white"
                 aria-label="Abrir chat"
             >
-                <Image src="/logo.png" alt="PabloPaDev Logo" width={48} height={48} className="rounded-full object-cover" />
+                <Image 
+                    src="/logo.png" 
+                    alt="PabloPaDev Logo" 
+                    width={48} 
+                    height={48} 
+                    className="rounded-full object-cover" 
+                    loading="lazy"
+                    sizes="48px"
+                />
             </button>
             {open && (
                 <div className="fixed bottom-24 right-6 z-50 w-80 max-w-[90vw] bg-white rounded-2xl shadow-2xl border border-blue-200 flex flex-col overflow-hidden animate-fade-in">
                     <div className="flex items-center gap-2 p-4 bg-blue-600 text-white">
                         <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                            <Image src="/logo.png" alt="PabloPaDev Logo" width={36} height={36} className="rounded-full object-cover" />
+                            <Image 
+                                src="/logo.png" 
+                                alt="PabloPaDev Logo" 
+                                width={36} 
+                                height={36} 
+                                className="rounded-full object-cover" 
+                                loading="lazy"
+                                sizes="36px"
+                            />
                         </div>
                         <span className="font-bold">AgusBot</span>
                         <button onClick={() => setOpen(false)} className="ml-auto text-white text-xl hover:text-blue-200">×</button>
@@ -97,18 +114,28 @@ function AgusBot() {
             )}
         </>
     );
-}
+});
 
-export default function Header() {
+// Memoización del componente Header
+const Header = memo(function Header() {
     const pathname = usePathname();
     const isLanding = pathname === "/";
+    
     return (
         <>
             <header className="border-b border-gray-800 bg-gray-900/95 backdrop-blur-md sticky top-0 z-50">
                 <div className="container mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
                     <Link href="/" className="flex items-center space-x-2 group">
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
-                            <Image src="/logo.png?v=2" alt="PabloPaDev Logo" width={32} height={32} className="object-cover brightness-0 invert" />
+                            <Image 
+                                src="/logo.png?v=2" 
+                                alt="PabloPaDev Logo" 
+                                width={32} 
+                                height={32} 
+                                className="object-cover brightness-0 invert" 
+                                loading="lazy"
+                                sizes="32px"
+                            />
                         </div>
                         <span className="text-xl font-bold text-white">PabloPaDev</span>
                     </Link>
@@ -142,4 +169,6 @@ export default function Header() {
             <AgusBot />
         </>
     );
-} 
+});
+
+export default Header; 
