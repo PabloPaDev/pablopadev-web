@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
 import { useState, memo } from "react";
 import Image from "next/image";
+import CardNav from "@/components/CardNav/CardNav";
 
 // Memoización del componente AgusBot para evitar re-renders innecesarios
 const AgusBot = memo(function AgusBot() {
@@ -123,7 +124,7 @@ const Header = memo(function Header() {
 
     return (
         <>
-            <header className="border-b border-gray-800 bg-gray-900/95 backdrop-blur-md sticky top-0 z-50 no-scroll-horizontal">
+            <header className="border-b border-gray-200 bg-white/90 backdrop-blur-md sticky top-0 z-50 no-scroll-horizontal">
                 <div className="container mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
                     <Link href="/" className="flex items-center space-x-2 group touch-target">
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden">
@@ -140,7 +141,7 @@ const Header = memo(function Header() {
                         <span className="text-xl font-bold text-white hidden sm:block">PabloPaDev</span>
                         <span className="text-lg font-bold text-white sm:hidden">Pablo</span>
                     </Link>
-                    {isLanding && (
+                    {false && (
                         <nav className="hidden md:flex items-center space-x-8">
                             <Link href="#servicios" className="text-gray-300 hover:text-white transition-colors touch-target">
                                 Servicios
@@ -153,7 +154,7 @@ const Header = memo(function Header() {
                             </Link>
                         </nav>
                     )}
-                    <div className="flex items-center space-x-2 lg:space-x-4">
+                    <div className="hidden items-center space-x-2 lg:space-x-4">
                         <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-gray-800 touch-target hidden sm:flex">
                             <Github className="w-4 h-4 mr-2" />
                             <span className="hidden lg:inline">GitHub</span>
@@ -167,7 +168,48 @@ const Header = memo(function Header() {
                     </div>
                 </div>
             </header>
-            <AgusBot />
+            <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+                <div className="relative pointer-events-auto">
+                    <CardNav
+                        logo="/logo.png"
+                        logoAlt="PabloPaDev"
+                        className=""
+                        items={[
+                            {
+                                label: "Sobre Mí",
+                                bgColor: "#111",
+                                textColor: "#fff",
+                                links: [
+                                    { label: "Perfil", ariaLabel: "Ir a sobre mí", href: "#sobre-mi" },
+                                    { label: "Servicios", ariaLabel: "Ir a servicios", href: "#servicios" }
+                                ]
+                            },
+                            {
+                                label: "Proyectos",
+                                bgColor: "#1a1a1a",
+                                textColor: "#fff",
+                                links: [
+                                    { label: "Destacados", ariaLabel: "Ver destacados", href: "#servicios" },
+                                    { label: "Contacto", ariaLabel: "Ir a contacto", href: "#contacto" }
+                                ]
+                            },
+                            {
+                                label: "Contacto",
+                                bgColor: "#222",
+                                textColor: "#fff",
+                                links: [
+                                    { label: "Email", ariaLabel: "Enviar email", href: "mailto:pablopadev@gmail.com" },
+                                    { label: "WhatsApp", ariaLabel: "Abrir WhatsApp", href: "https://wa.me/34657285571" }
+                                ]
+                            }
+                        ]}
+                        baseColor="#fff"
+                        menuColor="#000"
+                        ease="power3.out"
+                    />
+                </div>
+            </div>
+            <></>
         </>
     );
 });
