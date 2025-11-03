@@ -181,6 +181,55 @@ export default function DesarrolloWebPage() {
                     </Dialog>
                 </div>
             </div>
+            {/* Proyectos relacionados */}
+            <div className="container mx-auto px-4 lg:px-6 max-w-5xl mt-12 relative z-10 bg-gray-900/70 border border-blue-700 rounded-2xl shadow-xl backdrop-blur-md p-6">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Proyectos</h2>
+                <p className="text-gray-300 mb-6">Previsualiza y accede a otras páginas del sitio.</p>
+                <div className="grid md:grid-cols-3 gap-6">
+                    <a href="/servicios/base-datos" className="group block bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <div className="relative h-40 bg-gray-900">
+                            <iframe
+                                src="/servicios/base-datos"
+                                title="Base de datos"
+                                loading="lazy"
+                                className="absolute inset-0 w-full h-full pointer-events-none"
+                            />
+                        </div>
+                        <div className="p-4">
+                            <h3 className="font-semibold text-white">Base de datos</h3>
+                            <span className="text-sm text-gray-400 group-hover:underline">Ver página</span>
+                        </div>
+                    </a>
+                    <a href="/servicios/redes-sociales" className="group block bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <div className="relative h-40 bg-gray-900">
+                            <iframe
+                                src="/servicios/redes-sociales"
+                                title="Redes Sociales"
+                                loading="lazy"
+                                className="absolute inset-0 w-full h-full pointer-events-none"
+                            />
+                        </div>
+                        <div className="p-4">
+                            <h3 className="font-semibold text-white">Redes Sociales</h3>
+                            <span className="text-sm text-gray-400 group-hover:underline">Ver página</span>
+                        </div>
+                    </a>
+                    <a href="/servicios/optimizacion" className="group block bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                        <div className="relative h-40 bg-gray-900">
+                            <iframe
+                                src="/servicios/optimizacion"
+                                title="Optimización"
+                                loading="lazy"
+                                className="absolute inset-0 w-full h-full pointer-events-none"
+                            />
+                        </div>
+                        <div className="p-4">
+                            <h3 className="font-semibold text-white">Optimización</h3>
+                            <span className="text-sm text-gray-400 group-hover:underline">Ver página</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     );
 } 
