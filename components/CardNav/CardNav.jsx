@@ -1,5 +1,5 @@
 /*
-	Installed from https://reactbits.dev/tailwind/
+  Installed from https://reactbits.dev/tailwind/
 */
 
 import { useLayoutEffect, useRef, useState } from "react";
@@ -159,14 +159,12 @@ const CardNav = ({
             style={{ color: menuColor || "#000" }}
           >
             <div
-              className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${
-                isHamburgerOpen ? "translate-y-[4px] rotate-45" : ""
-              } group-hover:opacity-75`}
+              className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${isHamburgerOpen ? "translate-y-[4px] rotate-45" : ""
+                } group-hover:opacity-75`}
             />
             <div
-              className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${
-                isHamburgerOpen ? "-translate-y-[4px] -rotate-45" : ""
-              } group-hover:opacity-75`}
+              className={`hamburger-line w-[30px] h-[2px] bg-current transition-[transform,opacity,margin] duration-300 ease-linear [transform-origin:50%_50%] ${isHamburgerOpen ? "-translate-y-[4px] -rotate-45" : ""
+                } group-hover:opacity-75`}
             />
           </div>
 
@@ -178,11 +176,10 @@ const CardNav = ({
         </div>
 
         <div
-          className={`card-nav-content absolute left-0 right-0 top-[60px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-[1] ${
-            isExpanded
+          className={`card-nav-content absolute left-0 right-0 top-[60px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-[1] ${isExpanded
               ? "visible pointer-events-auto"
               : "invisible pointer-events-none"
-          } md:flex-row md:items-end md:gap-[12px]`}
+            } md:flex-row md:items-end md:gap-[12px]`}
           aria-hidden={!isExpanded}
         >
           {(items || []).slice(0, 3).map((item, idx) => (

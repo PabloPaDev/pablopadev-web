@@ -26,7 +26,7 @@ export default function HomePage() {
           {/* Columna derecha vacía tras limpieza */}
         </div>
       </section>
-      
+
       <section id="servicios" className="border-t border-gray-200">
         <div className="container mx-auto px-4 lg:px-6 py-16 grid md:grid-cols-3 gap-6">
           <div className="border border-gray-200 rounded-xl p-6 bg-white">
@@ -60,76 +60,6 @@ export default function HomePage() {
               </div>
               <div className="p-4">
                 <h3 className="font-medium">Restaurante</h3>
-                <span className="text-sm text-gray-600 group-hover:underline">Ver página</span>
-              </div>
-            </a>
-            <a href="/servicios/base-datos" className="group block border border-gray-200 rounded-xl overflow-hidden bg-white">
-              <div className="relative h-48 bg-gray-100">
-                <iframe
-                  src="/servicios/base-datos"
-                  title="Base de datos"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="font-medium">Base de datos</h3>
-                <span className="text-sm text-gray-600 group-hover:underline">Ver página</span>
-              </div>
-            </a>
-            <a href="/servicios/redes-sociales" className="group block border border-gray-200 rounded-xl overflow-hidden bg-white">
-              <div className="relative h-48 bg-gray-100">
-                <iframe
-                  src="/servicios/redes-sociales"
-                  title="Redes Sociales"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="font-medium">Redes Sociales</h3>
-                <span className="text-sm text-gray-600 group-hover:underline">Ver página</span>
-              </div>
-            </a>
-            <a href="/servicios/optimizacion" className="group block border border-gray-200 rounded-xl overflow-hidden bg-white">
-              <div className="relative h-48 bg-gray-100">
-                <iframe
-                  src="/servicios/optimizacion"
-                  title="Optimización"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="font-medium">Optimización</h3>
-                <span className="text-sm text-gray-600 group-hover:underline">Ver página</span>
-              </div>
-            </a>
-            <a href="/servicios/apps" className="group block border border-gray-200 rounded-xl overflow-hidden bg-white">
-              <div className="relative h-48 bg-gray-100">
-                <iframe
-                  src="/servicios/apps"
-                  title="Apps"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="font-medium">Apps</h3>
-                <span className="text-sm text-gray-600 group-hover:underline">Ver página</span>
-              </div>
-            </a>
-            <a href="/servicios/automatizacion-ia" className="group block border border-gray-200 rounded-xl overflow-hidden bg-white">
-              <div className="relative h-48 bg-gray-100">
-                <iframe
-                  src="/servicios/automatizacion-ia"
-                  title="Automatización IA"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="font-medium">Automatización IA</h3>
                 <span className="text-sm text-gray-600 group-hover:underline">Ver página</span>
               </div>
             </a>
