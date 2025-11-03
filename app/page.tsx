@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import SplashCursor from "@/components/SplashCursor/SplashCursor";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import {
@@ -33,9 +32,8 @@ import * as framerMotion from "framer-motion";
 const motion = framerMotion.motion;
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useEffect, useState, Suspense, lazy } from "react";
-import CardSwap from "@/components/CardSwap/CardSwap";
-import CardSwap3D from "@/components/CardSwap/CardSwap3D";
 import RBCardSwap from "@/components/reactbits/CardSwap";
+
 
 // Lazy load de componentes pesados
 const LazyTooltipProvider = lazy(() => import("@/components/ui/tooltip").then(module => ({ default: module.TooltipProvider })));
