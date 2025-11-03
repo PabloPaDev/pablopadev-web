@@ -35,6 +35,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { useEffect, useState, Suspense, lazy } from "react";
 import CardSwap from "@/components/CardSwap/CardSwap";
 import CardSwap3D from "@/components/CardSwap/CardSwap3D";
+import RBCardSwap from "@/components/reactbits/CardSwap";
 
 // Lazy load de componentes pesados
 const LazyTooltipProvider = lazy(() => import("@/components/ui/tooltip").then(module => ({ default: module.TooltipProvider })));
@@ -108,7 +109,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hidden md:block">
-            <CardSwap3D
+            <RBCardSwap
               items={[
                 { title: "Desarrollo web", href: "/servicios/desarrollo-web" },
                 { title: "Apps", href: "/servicios/apps" },
