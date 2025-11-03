@@ -6,6 +6,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from "react-icons/go";
+import Link from "next/link";
 
 const CardNav = ({
   logo,
@@ -169,7 +170,9 @@ const CardNav = ({
           </div>
 
           <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none">
-            <img src={logo} alt={logoAlt} className="logo h-[28px]" />
+            <Link href="/">
+              <img src={logo} alt={logoAlt} className="logo h-[28px] cursor-pointer" />
+            </Link>
           </div>
 
           {/* CTA eliminado */}
