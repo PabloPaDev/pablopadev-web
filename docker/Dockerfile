@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Install dependencies separately for better layer caching
 COPY package.json package-lock.json* ./
+ENV NPM_CONFIG_LEGACY_PEER_DEPS=true
 RUN npm ci --no-audit --no-fund || npm install --no-audit --no-fund
 
 # ---------- Development ----------
