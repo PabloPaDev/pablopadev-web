@@ -61,7 +61,7 @@ export default function DesarrolloWebPage() {
                     </Link>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-center">
-                    Desarrollo Web Integral
+                    Restaurante
                 </h1>
                 <p className="text-lg text-gray-300 mb-8 text-center">
                     Servicio completo de desarrollo web: desde la idea hasta la puesta en producción. Incluye frontend moderno, backend robusto, APIs propias e integración con servicios externos.
