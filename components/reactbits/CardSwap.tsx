@@ -49,31 +49,31 @@ export default function CardSwap({
   return (
     <div
       className={`relative ${className}`}
-      style={{ perspective: "1200px", transformStyle: "preserve-3d" }}
+      style={{ perspective: "1400px", transformStyle: "preserve-3d" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {order.map((idx, layer) => {
         const item = safeItems[idx];
         const t = fanT(layer, order.length);
-        const z = hovered ? -Math.abs(t) * 90 - layer * 10 : -layer * 90;
-        const x = hovered ? t * 90 : 0;
+        const z = hovered ? -Math.abs(t) * 120 - layer * 18 : -layer * 90;
+        const x = hovered ? t * 110 : 0;
         const y = hovered ? 0 : layer * 12;
-        const rotZ = hovered ? t * 14 : 0;
-        const rotX = hovered ? -3 : 0;
+        const rotZ = hovered ? t * 18 : 0;
+        const rotX = hovered ? -4 : 0;
         const scale = hovered ? 1 - layer * 0.02 : 1 - layer * 0.03;
 
         return (
           <div
             key={`${item.href}-${layer}`}
-            className="absolute inset-0 will-change-transform"
+            className="absolute inset-0 will-change-transform origin-bottom"
             style={{
               transform: `translateX(${x}px) translateY(${y}px) translateZ(${z}px) rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(${scale})`,
-              transition: "transform 600ms cubic-bezier(0.2,0.8,0.2,1), opacity 600ms",
+              transition: "transform 650ms cubic-bezier(0.2,0.8,0.2,1), opacity 600ms, box-shadow 300ms",
               zIndex: 100 - layer,
             }}
           >
-            <div className="rounded-xl border border-gray-200 bg-white overflow-hidden shadow-sm">
+            <div className={`rounded-xl border border-gray-200 bg-white overflow-hidden ${layer === 0 ? "shadow-xl" : layer === 1 ? "shadow-lg" : "shadow"}`}>
               <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <span className="font-medium text-gray-900">{item.title}</span>
                 <Link href={item.href} className="text-sm text-gray-600 hover:underline">
