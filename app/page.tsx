@@ -49,8 +49,8 @@ export default function HomePage() {
             <h2 className="text-2xl md:text-3xl font-semibold">Sobre mí</h2>
             <p className="mt-4 text-gray-700">Soy Pablo y desde hace un año me dedico al diseño y desarrollo web, dando a cada empresa el valor de marca y personalidad que necesitas.</p>
           </div>
-          <div className="rounded-xl border border-gray-200 overflow-hidden">
-            <Image src="/mi-foto.jpg" alt="Pablo" width={800} height={800} className="w-full h-auto object-cover" />
+          <div className="rounded-xl border border-gray-200 overflow-hidden w-full max-w-sm mx-auto">
+            <Image src="/mi-foto.jpg" alt="Pablo" width={480} height={480} className="w-full h-auto object-cover" />
           </div>
         </div>
       </section>
