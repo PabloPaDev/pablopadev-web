@@ -33,6 +33,7 @@ import * as framerMotion from "framer-motion";
 const motion = framerMotion.motion;
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useEffect, useState, Suspense, lazy } from "react";
+import CardSwap from "@/components/CardSwap/CardSwap";
 
 // Lazy load de componentes pesados
 const LazyTooltipProvider = lazy(() => import("@/components/ui/tooltip").then(module => ({ default: module.TooltipProvider })));
@@ -96,11 +97,30 @@ export default function HomePage() {
     <main className="min-h-screen bg-white text-gray-900 no-scroll-horizontal">
       <SplashCursor TRANSPARENT={true} BACK_COLOR={{ r: 0, g: 0, b: 0 }} />
       <section className="container mx-auto px-4 lg:px-6 py-24 md:py-32">
-        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">Desarrollo web</h1>
-        <p className="mt-4 text-lg md:text-xl text-gray-700 max-w-2xl">Páginas web, APIs y automatización con IA a medida</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a href="#contacto" className="px-5 py-3 rounded-md bg-black text-white">Contactar</a>
-          <a href="#servicios" className="px-5 py-3 rounded-md border border-gray-300 text-gray-900">Servicios</a>
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">Desarrollo web</h1>
+            <p className="mt-4 text-lg md:text-xl text-gray-700 max-w-2xl">Páginas web, APIs y automatización con IA a medida</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#contacto" className="px-5 py-3 rounded-md bg-black text-white">Contactar</a>
+              <a href="#servicios" className="px-5 py-3 rounded-md border border-gray-300 text-gray-900">Servicios</a>
+            </div>
+          </div>
+          <div className="hidden md:block">
+            <div className="grid gap-6">
+              <CardSwap title="Desarrollo web" href="/servicios/desarrollo-web" heightClass="h-[360px]">
+                <iframe src="/servicios/desarrollo-web" title="Desarrollo web" loading="lazy" className="w-full h-full" />
+              </CardSwap>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <CardSwap title="Apps" href="/servicios/apps" heightClass="h-[220px]">
+                  <iframe src="/servicios/apps" title="Apps" loading="lazy" className="w-full h-full" />
+                </CardSwap>
+                <CardSwap title="Automatización con IA" href="/servicios/automatizacion-ia" heightClass="h-[220px]">
+                  <iframe src="/servicios/automatizacion-ia" title="Automatización con IA" loading="lazy" className="w-full h-full" />
+                </CardSwap>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section id="servicios" className="border-t border-gray-200">
@@ -119,34 +139,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section id="demos" className="border-t border-gray-200">
-        <div className="container mx-auto px-4 lg:px-6 py-16">
-          <h2 className="text-2xl md:text-3xl font-semibold">Demos</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {[
-              { href: "/servicios/desarrollo-web", title: "Desarrollo web" },
-              { href: "/servicios/apps", title: "Apps" },
-              { href: "/servicios/base-datos", title: "Bases de datos" },
-              { href: "/servicios/automatizacion-ia", title: "Automatización con IA" },
-            ].map((demo) => (
-              <div key={demo.href} className="border border-gray-200 rounded-xl overflow-hidden bg-white">
-                <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
-                  <span className="font-medium text-gray-900">{demo.title}</span>
-                  <a href={demo.href} className="text-sm text-gray-600 hover:underline">Abrir</a>
-                </div>
-                <div className="w-full h-[420px] bg-gray-50">
-                  <iframe
-                    src={demo.href}
-                    title={demo.title}
-                    loading="lazy"
-                    className="w-full h-full"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
       <section id="sobre-mi" className="border-t border-gray-200">
         <div className="container mx-auto px-4 lg:px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
           <div>
