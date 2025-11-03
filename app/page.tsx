@@ -34,6 +34,7 @@ const motion = framerMotion.motion;
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useEffect, useState, Suspense, lazy } from "react";
 import CardSwap from "@/components/CardSwap/CardSwap";
+import CardSwap3D from "@/components/CardSwap/CardSwap3D";
 
 // Lazy load de componentes pesados
 const LazyTooltipProvider = lazy(() => import("@/components/ui/tooltip").then(module => ({ default: module.TooltipProvider })));
@@ -107,19 +108,15 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hidden md:block">
-            <div className="grid gap-6">
-              <CardSwap title="Desarrollo web" href="/servicios/desarrollo-web" heightClass="h-[360px]">
-                <iframe src="/servicios/desarrollo-web" title="Desarrollo web" loading="lazy" className="w-full h-full" />
-              </CardSwap>
-              <div className="grid sm:grid-cols-2 gap-6">
-                <CardSwap title="Apps" href="/servicios/apps" heightClass="h-[220px]">
-                  <iframe src="/servicios/apps" title="Apps" loading="lazy" className="w-full h-full" />
-                </CardSwap>
-                <CardSwap title="Automatización con IA" href="/servicios/automatizacion-ia" heightClass="h-[220px]">
-                  <iframe src="/servicios/automatizacion-ia" title="Automatización con IA" loading="lazy" className="w-full h-full" />
-                </CardSwap>
-              </div>
-            </div>
+            <CardSwap3D
+              items={[
+                { title: "Desarrollo web", href: "/servicios/desarrollo-web" },
+                { title: "Apps", href: "/servicios/apps" },
+                { title: "Automatización con IA", href: "/servicios/automatizacion-ia" },
+                { title: "Bases de datos", href: "/servicios/base-datos" },
+              ]}
+              heightClass="h-[420px]"
+            />
           </div>
         </div>
       </section>
@@ -139,7 +136,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      
+
       <section id="sobre-mi" className="border-t border-gray-200">
         <div className="container mx-auto px-4 lg:px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
           <div>
