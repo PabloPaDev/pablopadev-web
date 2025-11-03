@@ -26,6 +26,24 @@ export default function HomePage() {
           {/* Columna derecha vacía tras limpieza */}
         </div>
       </section>
+      
+      <section id="servicios" className="border-t border-gray-200">
+        <div className="container mx-auto px-4 lg:px-6 py-16 grid md:grid-cols-3 gap-6">
+          <div className="border border-gray-200 rounded-xl p-6 bg-white">
+            <h3 className="font-medium text-lg">Páginas webs</h3>
+            <p className="mt-2 text-gray-600">React/Next.js + Tailwind. Rápidas y escalables.</p>
+          </div>
+          <div className="border border-gray-200 rounded-xl p-6 bg-white">
+            <h3 className="font-medium text-lg">APIs y backend</h3>
+            <p className="mt-2 text-gray-600">APIs limpias y seguras. Node.js o Python/Flask.</p>
+          </div>
+          <div className="border border-gray-200 rounded-xl p-6 bg-white">
+            <h3 className="font-medium text-lg">Bases de datos</h3>
+            <p className="mt-2 text-gray-600">PostgreSQL. Modelado y optimización.</p>
+          </div>
+        </div>
+      </section>
+
       <section id="proyectos" className="border-t border-gray-200">
         <div className="container mx-auto px-4 lg:px-6 py-16">
           <h2 className="text-2xl md:text-3xl font-semibold">Proyectos</h2>
@@ -115,22 +133,6 @@ export default function HomePage() {
                 <span className="text-sm text-gray-600 group-hover:underline">Ver página</span>
               </div>
             </a>
-          </div>
-        </div>
-      </section>
-      <section id="servicios" className="border-t border-gray-200">
-        <div className="container mx-auto px-4 lg:px-6 py-16 grid md:grid-cols-3 gap-6">
-          <div className="border border-gray-200 rounded-xl p-6 bg-white">
-            <h3 className="font-medium text-lg">Páginas webs</h3>
-            <p className="mt-2 text-gray-600">React/Next.js + Tailwind. Rápidas y escalables.</p>
-          </div>
-          <div className="border border-gray-200 rounded-xl p-6 bg-white">
-            <h3 className="font-medium text-lg">APIs y backend</h3>
-            <p className="mt-2 text-gray-600">APIs limpias y seguras. Node.js o Python/Flask.</p>
-          </div>
-          <div className="border border-gray-200 rounded-xl p-6 bg-white">
-            <h3 className="font-medium text-lg">Bases de datos</h3>
-            <p className="mt-2 text-gray-600">PostgreSQL. Modelado y optimización.</p>
           </div>
         </div>
       </section>
