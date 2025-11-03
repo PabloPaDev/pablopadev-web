@@ -1070,8 +1070,8 @@ function SplashCursor({
     }
 
     function generateColor() {
-      // Tinta gris muy oscuro (alpha > 0 para que se vea en el shader)
-      const v = 0.06; // casi negro
+      // Gris muy oscuro (no cero) para que el alpha del shader sea visible
+      const v = 0.08 + Math.random() * 0.07; // 0.08 - 0.15
       return { r: v, g: v, b: v };
     }
 
