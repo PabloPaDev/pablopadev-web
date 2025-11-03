@@ -119,6 +119,34 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <section id="demos" className="border-t border-gray-200">
+        <div className="container mx-auto px-4 lg:px-6 py-16">
+          <h2 className="text-2xl md:text-3xl font-semibold">Demos</h2>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {[
+              { href: "/servicios/desarrollo-web", title: "Desarrollo web" },
+              { href: "/servicios/apps", title: "Apps" },
+              { href: "/servicios/base-datos", title: "Bases de datos" },
+              { href: "/servicios/automatizacion-ia", title: "Automatización con IA" },
+            ].map((demo) => (
+              <div key={demo.href} className="border border-gray-200 rounded-xl overflow-hidden bg-white">
+                <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+                  <span className="font-medium text-gray-900">{demo.title}</span>
+                  <a href={demo.href} className="text-sm text-gray-600 hover:underline">Abrir</a>
+                </div>
+                <div className="w-full h-[420px] bg-gray-50">
+                  <iframe
+                    src={demo.href}
+                    title={demo.title}
+                    loading="lazy"
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section id="sobre-mi" className="border-t border-gray-200">
         <div className="container mx-auto px-4 lg:px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
           <div>
