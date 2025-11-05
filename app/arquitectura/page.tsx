@@ -119,10 +119,13 @@ export default function Home() {
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
                 >
-                    <img
+                    <Image
                         src="/images/arquitectura-hero.png"
                         alt="Casa moderna de arquitectura contemporánea al atardecer"
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        priority
+                        quality={90}
                         onError={(e) => {
                             // Fallback a imagen anterior si no existe la local
                             const target = e.target as HTMLImageElement
