@@ -121,6 +121,11 @@ const AgusBot = memo(function AgusBot() {
 const Header = memo(function Header() {
     const pathname = usePathname();
     const isLanding = pathname === "/";
+    
+    // Ocultar header en la página de arquitectura
+    if (pathname === "/arquitectura") {
+        return null;
+    }
 
     return (
         <>

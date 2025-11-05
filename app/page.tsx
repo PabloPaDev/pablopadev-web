@@ -3,6 +3,7 @@
 import SplashCursor from "@/components/SplashCursor/SplashCursor";
 // limpiado: sin iconos de lucide-react en la versión minimal
 import Image from "next/image"
+import Link from "next/link"
 
 
 // limpieza: sin lazy load innecesario
@@ -44,25 +45,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="proyectos" className="border-t border-gray-200">
+      <section id="trabajos" className="border-t border-gray-200">
         <div className="container mx-auto px-4 lg:px-6 py-16">
-          <h2 className="text-2xl md:text-3xl font-semibold">Proyectos</h2>
-          <p className="mt-2 text-gray-700">Previsualiza y accede a las páginas de servicios.</p>
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            <a href="/servicios/desarrollo-web" className="group block border border-gray-200 rounded-xl overflow-hidden bg-white">
-              <div className="relative h-48 bg-gray-100">
-                <iframe
-                  src="/servicios/desarrollo-web"
-                  title="Restaurante"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full pointer-events-none"
+          <h2 className="text-2xl md:text-3xl font-semibold mb-8">Mis trabajos</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link href="/arquitectura" className="group block border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-lg transition-shadow">
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.png-2Ncig4kkdzQiCyVIcV0UegCUJ4bjkr.jpeg"
+                  alt="Arquitectura"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-medium">Restaurante</h3>
-                <span className="text-sm text-gray-600 group-hover:underline">Ver página</span>
+                <h3 className="font-medium">Estudio de Arquitectura</h3>
+                <p className="text-sm text-gray-600 mt-1">Diseño web para una empresa de arquitectura y diseño de interiores</p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -71,7 +70,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 lg:px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold">Sobre mí</h2>
-            <p className="mt-4 text-gray-700">Soy Pablo y desde hace un año me dedico al diseño y desarrollo web, dando a cada empresa el valor de marca y personalidad que necesitas.</p>
+            <p className="mt-4 text-gray-700">Soy Pablo y desde hace un año me dedico al diseño y desarrollo web, dando a cada empresa el valor de marca y personalidad que necesita.</p>
           </div>
           <div className="rounded-xl border border-gray-200 overflow-hidden w-full max-w-sm mx-auto">
             <Image src="/mi-foto.jpg" alt="Pablo" width={480} height={480} className="w-full h-auto object-cover" />
@@ -83,7 +82,7 @@ export default function HomePage() {
           <h2 className="text-2xl font-semibold">Contacto</h2>
           <p className="mt-2 text-gray-700">pablopadev@gmail.com</p>
           <p className="mt-1 text-gray-700">+34 657 285 571</p>
-          <p className="mt-8 text-sm text-gray-500">© {new Date().getFullYear()} PabloPaDev</p>
+          <p className="mt-8 text-sm text-gray-500">© {new Date().getFullYear()} PabloPaDev. Hecho con mucho café </p>
         </div>
       </footer>
     </main>
