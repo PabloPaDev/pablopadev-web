@@ -62,6 +62,24 @@ export default function HomePage() {
                 <p className="text-sm text-gray-600 mt-1">Diseño web para una empresa de arquitectura y diseño de interiores</p>
               </div>
             </Link>
+            <Link href="/volta" className="group block border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-lg transition-shadow">
+              <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
+                <Image
+                  src="/volta/logo_volta.png"
+                  alt="VOLTĀ - Café premium para deportistas"
+                  width={200}
+                  height={200}
+                  className="object-contain group-hover:scale-105 transition-transform duration-300"
+                  style={{
+                    filter: 'brightness(0)',
+                  }}
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="font-medium">VOLTĀ</h3>
+                <p className="text-sm text-gray-600 mt-1">Landing page para marca de café premium para deportistas</p>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

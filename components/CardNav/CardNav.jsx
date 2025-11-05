@@ -18,7 +18,15 @@ const CardNav = ({
   menuColor,
   buttonBgColor,
   buttonTextColor,
+  onCardClick,
 }) => {
+  const handleCardClick = (item, index) => {
+    if (item.onClick) {
+      item.onClick()
+    } else if (onCardClick) {
+      onCardClick()
+    }
+  }
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const navRef = useRef(null);
@@ -151,8 +159,23 @@ const CardNav = ({
         style={{ backgroundColor: baseColor }}
       >
         <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-[2]">
+          <div className="flex items-center gap-4 order-1">
+            <div className="logo-container flex items-center">
+              <Link href="/">
+                <img
+                  src={logo}
+                  alt={logoAlt}
+                  className="logo h-[28px] cursor-pointer"
+                  style={{
+                    filter: 'brightness(0) saturate(100%) invert(30%) sepia(40%) saturate(800%) hue-rotate(340deg) brightness(110%) contrast(90%)',
+                  }}
+                />
+              </Link>
+            </div>
+          </div>
+
           <div
-            className={`hamburger-menu ${isHamburgerOpen ? "open" : ""} group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 md:order-none`}
+            className={`hamburger-menu ${isHamburgerOpen ? "open" : ""} group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2`}
             onClick={toggleMenu}
             role="button"
             aria-label={isExpanded ? "Close menu" : "Open menu"}
@@ -169,48 +192,46 @@ const CardNav = ({
             />
           </div>
 
-          <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none">
-            <Link href="/">
-              <img src={logo} alt={logoAlt} className="logo h-[28px] cursor-pointer" />
-            </Link>
-          </div>
-
           {/* CTA eliminado */}
         </div>
 
         <div
           className={`card-nav-content absolute left-0 right-0 top-[60px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-[1] ${isExpanded
-              ? "visible pointer-events-auto"
-              : "invisible pointer-events-none"
+            ? "visible pointer-events-auto"
+            : "invisible pointer-events-none"
             } md:flex-row md:items-end md:gap-[12px]`}
           aria-hidden={!isExpanded}
         >
           {(items || []).slice(0, 3).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
+              className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%] cursor-pointer transition-opacity duration-300 hover:opacity-90"
               ref={setCardRef(idx)}
               style={{ backgroundColor: item.bgColor, color: item.textColor }}
+              onClick={() => handleCardClick(item, idx)}
             >
               <div className="nav-card-label font-normal tracking-[-0.5px] text-[18px] md:text-[22px]">
                 {item.label}
               </div>
-              <div className="nav-card-links mt-auto flex flex-col gap-[2px]">
-                {item.links?.map((lnk, i) => (
-                  <a
-                    key={`${lnk.label}-${i}`}
-                    className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
-                    href={lnk.href}
-                    aria-label={lnk.ariaLabel}
-                  >
-                    <GoArrowUpRight
-                      className="nav-card-link-icon shrink-0"
-                      aria-hidden="true"
-                    />
-                    {lnk.label}
-                  </a>
-                ))}
-              </div>
+              {item.links && item.links.length > 0 && (
+                <div className="nav-card-links mt-auto flex flex-col gap-[2px]">
+                  {item.links.map((lnk, i) => (
+                    <a
+                      key={`${lnk.label}-${i}`}
+                      className="nav-card-link inline-flex items-center gap-[6px] no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
+                      href={lnk.href}
+                      aria-label={lnk.ariaLabel}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <GoArrowUpRight
+                        className="nav-card-link-icon shrink-0"
+                        aria-hidden="true"
+                      />
+                      {lnk.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
