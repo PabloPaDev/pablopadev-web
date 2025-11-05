@@ -27,6 +27,7 @@ const hoverSections = [
 
 export default function Home() {
     const [hoveredSection, setHoveredSection] = useState<number | null>(null)
+    const [imageError, setImageError] = useState(false)
     const imageRef = useRef<HTMLDivElement>(null)
     const servicesRef = useRef<HTMLElement>(null)
     const contactRef = useRef<HTMLElement>(null)
@@ -119,19 +120,23 @@ export default function Home() {
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
                 >
-                    <Image
-                        src="/images/arquitectura-hero.png"
-                        alt="Casa moderna de arquitectura contemporánea al atardecer"
-                        fill
-                        className="object-cover"
-                        priority
-                        quality={90}
-                        onError={(e) => {
-                            // Fallback a imagen anterior si no existe la local
-                            const target = e.target as HTMLImageElement
-                            target.src = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.png-2Ncig4kkdzQiCyVIcV0UegCUJ4bjkr.jpeg"
-                        }}
-                    />
+                    {!imageError ? (
+                        <Image
+                            src="/images/arquitectura-hero.png"
+                            alt="Casa moderna de arquitectura contemporánea al atardecer"
+                            fill
+                            className="object-cover"
+                            priority
+                            quality={90}
+                            onError={() => setImageError(true)}
+                        />
+                    ) : (
+                        <img
+                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.png-2Ncig4kkdzQiCyVIcV0UegCUJ4bjkr.jpeg"
+                            alt="Casa moderna de arquitectura contemporánea al atardecer"
+                            className="w-full h-full object-cover"
+                        />
+                    )}
                     {/* Overlay oscuro para mejor legibilidad */}
                     <div className="absolute inset-0 bg-black/30" />
 
