@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import Image from "next/image"
 import { useState, useRef, useEffect } from "react"
 
 const hoverSections = [
@@ -27,7 +26,6 @@ const hoverSections = [
 
 export default function Home() {
     const [hoveredSection, setHoveredSection] = useState<number | null>(null)
-    const [imageError, setImageError] = useState(false)
     const imageRef = useRef<HTMLDivElement>(null)
     const servicesRef = useRef<HTMLElement>(null)
     const contactRef = useRef<HTMLElement>(null)
@@ -120,23 +118,17 @@ export default function Home() {
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
                 >
-                    {!imageError ? (
-                        <Image
-                            src="/images/arquitectura-hero.png"
-                            alt="Casa moderna de arquitectura contemporánea al atardecer"
-                            fill
-                            className="object-cover"
-                            priority
-                            quality={90}
-                            onError={() => setImageError(true)}
-                        />
-                    ) : (
-                        <img
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.png-2Ncig4kkdzQiCyVIcV0UegCUJ4bjkr.jpeg"
-                            alt="Casa moderna de arquitectura contemporánea al atardecer"
-                            className="w-full h-full object-cover"
-                        />
-                    )}
+                    <img
+                        src="/images/arquitectura-hero.png"
+                        alt="Casa moderna de arquitectura contemporánea al atardecer"
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                            const target = e.target as HTMLImageElement
+                            if (target.src !== "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.png-2Ncig4kkdzQiCyVIcV0UegCUJ4bjkr.jpeg") {
+                                target.src = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.png-2Ncig4kkdzQiCyVIcV0UegCUJ4bjkr.jpeg"
+                            }
+                        }}
+                    />
                     {/* Overlay oscuro para mejor legibilidad */}
                     <div className="absolute inset-0 bg-black/30" />
 
