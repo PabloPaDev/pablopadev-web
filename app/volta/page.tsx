@@ -98,7 +98,7 @@ export default function VoltaPage() {
                     <CardNav
                         logo="/volta/logo_volta.png"
                         logoAlt="VOLTĀ"
-                        className="[&_.logo]:h-[64px]"
+                        className="[&&_.logo]:h-[64px]"
                         items={[
                             {
                                 label: "VOLTA CLUB",

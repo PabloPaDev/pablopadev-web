@@ -2,7 +2,6 @@
 
 import SplashCursor from "@/components/SplashCursor/SplashCursor";
 // limpiado: sin iconos de lucide-react en la versión minimal
-import Image from "next/image"
 import Link from "next/link"
 
 
@@ -64,7 +63,7 @@ export default function HomePage() {
             </Link>
             <Link href="/volta" className="group block border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-lg transition-shadow">
               <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center">
-                <Image
+                <img
                   src="/volta/logo_volta.png"
                   alt="VOLTĀ - Café premium para deportistas"
                   width={200}
@@ -91,7 +90,7 @@ export default function HomePage() {
             <p className="mt-4 text-gray-700">Soy Pablo y desde hace un año me dedico al diseño y desarrollo web, dando a cada empresa el valor de marca y personalidad que necesita.</p>
           </div>
           <div className="rounded-xl border border-gray-200 overflow-hidden w-full max-w-sm mx-auto">
-            <Image src="/mi-foto.jpg" alt="Pablo" width={480} height={480} className="w-full h-auto object-cover" />
+            <img src="/mi-foto.jpg" alt="Pablo" width={480} height={480} className="w-full h-auto object-cover" />
           </div>
         </div>
       </section>
