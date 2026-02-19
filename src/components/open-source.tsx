@@ -26,9 +26,8 @@ export default function OpenSource() {
       description:
         "Plataforma web para entrenamiento de resistencia y seguimiento de rendimiento deportivo. Sistema completo para planificar rutinas, registrar entrenamientos y analizar progreso con métricas avanzadas.",
       tags: ["Next.js", "React", "Deportes", "Fitness"],
-      link: "#",
-      isWebsite: false,
-      inProgress: true,
+      link: "https://www.endurance3.es/",
+      isWebsite: true,
     },
   ]
 

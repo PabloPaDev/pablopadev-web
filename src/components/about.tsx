@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Code2, Globe, Server } from "lucide-react"
+import { Code2, Server } from "lucide-react"
+import DogLogo from "@/components/dog-logo"
 
 export default function About() {
   const features = [
@@ -19,7 +20,7 @@ export default function About() {
       description: "Desarrollo de APIs y servicios backend con Node.js, flask, django y RESTful APIs",
     },
     {
-      icon: <Globe className="h-10 w-10 text-primary" />,
+      icon: <DogLogo className="h-10 w-10 text-primary" />,
       title: "Siempre aprendiendo",
       description: "Siempre buscando nuevas tecnologías y herramientas para mejorar mis habilidades y crear proyectos útiles",
     },
