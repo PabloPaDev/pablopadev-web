@@ -27,7 +27,7 @@ export default function About() {
   ]
 
   return (
-    <div className="w-full bg-muted/30">
+    <div className="w-full bg-background">
       <section id="about" className="py-20 w-full">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="space-y-12">

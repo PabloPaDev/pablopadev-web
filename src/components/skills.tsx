@@ -23,7 +23,7 @@ export default function Skills() {
   ]
 
   return (
-    <section id="skills" className="py-20 bg-muted/30">
+    <section id="skills" className="py-20 bg-background">
       <div className="container px-4 md:px-6">
         <div className="space-y-12">
           <div className="space-y-4 text-center">
