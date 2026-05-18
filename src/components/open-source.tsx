@@ -1,14 +1,21 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { GitPullRequest } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { ExternalLink, GitPullRequest } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
+	type ProjectEntry,
 	projects,
 	projectsIntroAfter,
 	projectsIntroBefore,
 	projectsIntroHighlight,
 	projectsSectionTitle,
 } from "@/data/cv"
+
+function projectVisitLabel({ title, visitLabel }: ProjectEntry): string {
+	if (visitLabel) return visitLabel
+	return title.replace(/^Web\s+/i, "").trim()
+}
 
 export default function OpenSource() {
 	return (
@@ -41,6 +48,11 @@ export default function OpenSource() {
 												Proyecto propio
 											</Badge>
 										) : null}
+										{contribution.inProgress ? (
+											<Badge variant="secondary" className="font-semibold">
+												En proceso
+											</Badge>
+										) : null}
 									</div>
 									<h3 className="text-lg font-bold mb-2">{contribution.title}</h3>
 									<p className="text-sm text-muted-foreground flex-1">{contribution.description}</p>
@@ -51,6 +63,19 @@ export default function OpenSource() {
 											</span>
 										))}
 									</div>
+									{contribution.url ? (
+										<Button variant="outline" size="sm" className="mt-4 w-full" asChild>
+											<a
+												href={contribution.url}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												Visitar {projectVisitLabel(contribution)}
+												<ExternalLink aria-hidden />
+												<span className="sr-only">(abre en nueva pestaña)</span>
+											</a>
+										</Button>
+									) : null}
 								</CardContent>
 							</Card>
 						</div>

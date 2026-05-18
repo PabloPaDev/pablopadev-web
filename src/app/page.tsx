@@ -23,8 +23,8 @@ export default function Home() {
 				</div>
 			</div>
 			<About />
-			<Skills />
 			<OpenSource />
+			<Skills />
 			<Contact />
 		</main>
 	);
