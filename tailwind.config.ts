@@ -9,6 +9,9 @@ const config: Config = {
 	],
 	theme: {
     	extend: {
+    		fontFamily: {
+    			tattoo: ["var(--font-tattoo-display)", "Georgia", "Times New Roman", "serif"],
+    		},
     		borderRadius: {
     			lg: 'var(--radius)',
     			md: 'calc(var(--radius) - 2px)',

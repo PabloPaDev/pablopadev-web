@@ -21,8 +21,8 @@ export default function NoScriptStyles() {
           transform: none !important;
         }
         
-        /* Ensure the header is visible and fixed with glassmorphism */
-        header {
+        /* Portfolio header (clase site-header en components/header.tsx) */
+        header.site-header {
           position: fixed !important;
           top: 0 !important;
           left: 0 !important;
@@ -33,13 +33,11 @@ export default function NoScriptStyles() {
           border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
         }
 
-        /* Add padding to the body to account for the fixed header */
         body {
-          padding-top: 4rem !important; /* 64px, matches the header height */
+          padding-top: 4rem !important;
         }
         
-        /* Dark mode adjustments */
-        .dark header {
+        .dark header.site-header {
           background-color: rgba(0, 0, 0, 0.7) !important;
           border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
         }
