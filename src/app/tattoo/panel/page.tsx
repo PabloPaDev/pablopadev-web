@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
 import { getPanelDb } from "@/lib/tattoo/panel/db";
-import { formatDateTime } from "@/lib/tattoo/panel/format";
+import { formatDateTime, unwrapSupabaseJoin } from "@/lib/tattoo/panel/format";
 import type { AppointmentRequest } from "@/lib/tattoo/panel/types";
 import {
 	TattooHeader,
@@ -134,7 +134,7 @@ export default async function TattooPanelPage() {
 							Ver calendario →
 						</Link>
 					</div>
-					{upcomingAppointments?.length === 0 ? (
+					{!(upcomingAppointments ?? []).length ? (
 						<p className="font-sans text-sm text-black">
 							No hay citas próximas.
 						</p>
@@ -150,15 +150,19 @@ export default async function TattooPanelPage() {
 									</tr>
 								</thead>
 								<tbody>
-									{upcomingAppointments.map((a) => (
+									{(upcomingAppointments ?? []).map((a) => (
 										<tr
 											key={a.id}
 											className="border-b border-neutral-100 last:border-0"
 										>
 											<td className="p-3 font-medium">{a.title}</td>
 											<td className="p-3">
-												{(a.clients as { name: string } | null)
-													?.name ?? "—"}
+												{unwrapSupabaseJoin(
+													a.clients as
+														| { name: string }
+														| { name: string }[]
+														| null
+												)?.name ?? "—"}
 											</td>
 											<td className="p-3 whitespace-nowrap">
 												{formatDateTime(a.starts_at)}

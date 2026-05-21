@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useTransition } from "react";
 import { updateAppointmentStatusAction } from "@/app/tattoo/admin/appointments/actions";
 import { TattooCard, StatusBadge } from "@/app/tattoo/components/tattoo-shell";
-import { formatDateTime } from "@/lib/tattoo/emails";
+import { formatDateTime } from "@/lib/tattoo/panel/format";
 
 type Row = {
 	id: string;

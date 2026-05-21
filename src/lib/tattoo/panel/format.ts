@@ -1,3 +1,11 @@
+/** Supabase a veces tipa relaciones 1:1 como objeto o como array. */
+export function unwrapSupabaseJoin<T>(
+	value: T | T[] | null | undefined
+): T | null {
+	if (value == null) return null;
+	return Array.isArray(value) ? (value[0] ?? null) : value;
+}
+
 export function toLocalDatetime(iso: string) {
 	const d = new Date(iso);
 	const pad = (n: number) => String(n).padStart(2, "0");

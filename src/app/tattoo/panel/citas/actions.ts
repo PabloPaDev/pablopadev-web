@@ -13,6 +13,13 @@ import {
 	createTattooCalendarEvent,
 	deleteTattooCalendarEvent,
 } from "@/lib/tattoo/googleCalendar";
+import { unwrapSupabaseJoin } from "@/lib/tattoo/panel/format";
+
+type ClientContactRow = {
+	name: string;
+	email: string | null;
+	phone: string | null;
+};
 
 /** Mismo status que al aceptar una solicitud (appointments). */
 const NEW_APPOINTMENT_STATUS = "confirmed";
@@ -232,11 +239,9 @@ export async function updatePanelAppointmentAction(
 		return { error: fetchError?.message ?? "Cita no encontrada." };
 	}
 
-	const clientRow = existing.clients as {
-		name: string;
-		email: string | null;
-		phone: string | null;
-	} | null;
+	const clientRow = unwrapSupabaseJoin(
+		existing.clients as ClientContactRow | ClientContactRow[] | null
+	);
 
 	const { error } = await supabase
 		.from("appointments")
@@ -367,11 +372,9 @@ export async function cancelPanelAppointmentAction(
 		return { error: updateError.message };
 	}
 
-	const clientRow = appointment.clients as {
-		name: string;
-		email: string | null;
-		phone: string | null;
-	} | null;
+	const clientRow = unwrapSupabaseJoin(
+		appointment.clients as ClientContactRow | ClientContactRow[] | null
+	);
 
 	if (clientRow) {
 		try {

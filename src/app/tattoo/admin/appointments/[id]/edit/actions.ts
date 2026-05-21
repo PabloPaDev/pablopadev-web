@@ -9,6 +9,7 @@ import {
 	appointmentUpdatedTattooerHtml,
 	formatDateTime,
 } from "@/lib/tattoo/emails";
+import { unwrapSupabaseJoin } from "@/lib/tattoo/panel/format";
 
 export type EditAppointmentState = {
 	error?: string;
@@ -53,10 +54,12 @@ export async function updateAppointmentAction(
 		return { error: error?.message ?? "No se pudo actualizar" };
 	}
 
-	const client = appointment.clients as {
-		name: string;
-		email: string | null;
-	} | null;
+	const client = unwrapSupabaseJoin(
+		appointment.clients as
+			| { name: string; email: string | null }
+			| { name: string; email: string | null }[]
+			| null
+	);
 	const startsFormatted = formatDateTime(appointment.starts_at);
 	const logContext = {
 		appointment_id: appointmentId,

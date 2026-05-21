@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { getPanelDb } from "@/lib/tattoo/panel/db";
-import { formatDateTime } from "@/lib/tattoo/panel/format";
-import type { AppointmentRequest, Client } from "@/lib/tattoo/panel/types";
+import { formatDateTime, unwrapSupabaseJoin } from "@/lib/tattoo/panel/format";
+import type { AppointmentRequest } from "@/lib/tattoo/panel/types";
 import { instagramMatches, normalizeInstagram } from "@/lib/tattoo/instagram";
 import {
 	sendTattooRequestReceivedEmails,
@@ -32,6 +32,14 @@ export type RequestChangeState = {
 	success?: boolean;
 };
 
+type AppointmentClientJoin = {
+	id: string;
+	name: string;
+	email: string | null;
+	phone: string | null;
+	instagram: string | null;
+};
+
 export async function lookupMiCitaByInstagramAction(
 	_prev: LookupMiCitaState,
 	formData: FormData
@@ -57,9 +65,9 @@ export async function lookupMiCitaByInstagramAction(
 		return { error: clientsError.message };
 	}
 
-	const client = (clients ?? []).find((row) =>
-		instagramMatches((row as Client).instagram, instagramRaw)
-	) as Client | undefined;
+	const client = ((clients ?? []) as AppointmentClientJoin[]).find((row) =>
+		instagramMatches(row.instagram, instagramRaw)
+	);
 
 	if (!client) {
 		return {
@@ -128,7 +136,7 @@ export async function requestAppointmentChangeAction(
 	const { data: appointment, error: appointmentError } = await supabase
 		.from("appointments")
 		.select(
-			"id, title, starts_at, ends_at, status, client_id, clients(name, email, phone, instagram)"
+			"id, title, starts_at, ends_at, status, client_id, clients(id, name, email, phone, instagram)"
 		)
 		.eq("id", appointmentId)
 		.single();
@@ -141,7 +149,9 @@ export async function requestAppointmentChangeAction(
 		return { error: "Esta cita está cancelada." };
 	}
 
-	const client = appointment.clients as Client | null;
+	const client = unwrapSupabaseJoin(
+		appointment.clients as AppointmentClientJoin | AppointmentClientJoin[] | null
+	);
 	if (!client || !instagramMatches(client.instagram, instagramRaw)) {
 		return { error: "Instagram no coincide con esta cita." };
 	}
