@@ -75,7 +75,9 @@ export type ProjectEntry = {
 	description: string
 	tags: string[]
 	url?: string
+	image?: string
 	visitLabel?: string
+	client?: string
 	ownProject?: boolean
 	inProgress?: boolean
 }
@@ -87,6 +89,7 @@ export const projects: ProjectEntry[] = [
 			"Tienda online de café de especialidad en Gandia. Plataforma e-commerce desarrollada con tecnologías modernas para mostrar productos premium, gestionar pedidos y conectar con la comunidad de amantes del café y el deporte.",
 		tags: ["E-commerce", "Next.js", "React", "Tailwind CSS"],
 		url: "https://www.voltaathletics.es/",
+		image: "/projects/volta-athletics.jpg",
 	},
 	{
 		title: "Playnotes.es",
@@ -94,6 +97,7 @@ export const projects: ProjectEntry[] = [
 			"Web y app para reseñar videojuegos, montar tu biblioteca personal y crear listas: seguimiento de lo que juegas, valoraciones y descubrimiento organizado.",
 		tags: ["Videojuegos", "Reseñas", "Biblioteca", "Listas"],
 		url: "https://www.playnotes.es/",
+		image: "/projects/playnotes.jpg",
 		ownProject: true,
 	},
 	{
@@ -102,27 +106,15 @@ export const projects: ProjectEntry[] = [
 			"Plataforma web para entrenamiento de resistencia y seguimiento de rendimiento deportivo. Sistema completo para planificar rutinas, registrar entrenamientos y analizar progreso con métricas avanzadas.",
 		tags: ["Next.js", "React", "Deportes", "Fitness"],
 		url: "https://www.endurance3.es/",
+		image: "/projects/endurance3.jpg",
 		visitLabel: "Endurance3",
-	},
-	{
-		title: "Web de venta de patines",
-		description:
-			"Tienda online de patines y material de patinaje. Catálogo de productos, experiencia de compra fluida y diseño orientado a la comunidad del skate y el roller.",
-		tags: ["E-commerce", "Next.js", "React", "Tailwind CSS"],
-		inProgress: true,
+		client: "Carlos Cabrera, entrenador multidisciplinar",
 	},
 	{
 		title: "Ciclo-Activa",
 		description:
 			"Herramienta para la prevención de lesiones en la mujer deportista mediante métricas de menstruación, alimentación y deporte: seguimiento integral para adaptar carga, descanso y nutrición con criterio.",
 		tags: ["Salud deportiva", "Ciclo menstrual", "Nutrición", "Prevención"],
-		inProgress: true,
-	},
-	{
-		title: "Panel de citas para tatuadores",
-		description:
-			"Panel para estudios de tatuaje: reservas y seguimiento de clientes, calendario interactivo, tareas del día a día e integración con WhatsApp, con automatización e IA para cancelaciones y reprogramaciones.",
-		tags: ["Flask", "PostgreSQL", "IA", "WhatsApp"],
 		inProgress: true,
 	},
 ]

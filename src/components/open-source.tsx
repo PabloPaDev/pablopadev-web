@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -30,31 +31,71 @@ export default function OpenSource() {
 					</p>
 				</div>
 
-				<div className="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2 xl:grid-cols-3">
+				<div className="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2">
 					{projects.map((contribution) => (
 						<div key={contribution.title}>
 							<Card
 								className={cn(
-									"h-full flex flex-col",
+									"h-full flex flex-col overflow-hidden",
 									contribution.ownProject &&
 										"border-2 border-primary shadow-md ring-1 ring-primary/20"
 								)}
 							>
+								{contribution.image ? (
+									contribution.url ? (
+										<a
+											href={contribution.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="relative block aspect-[16/10] bg-muted"
+										>
+											<Image
+												src={contribution.image}
+												alt={`Vista de ${contribution.title}`}
+												fill
+												sizes="(max-width: 640px) 100vw, 50vw"
+												className="object-cover object-top"
+											/>
+											<span className="sr-only">
+												Abrir {projectVisitLabel(contribution)} en una pestaña nueva
+											</span>
+										</a>
+									) : (
+										<div className="relative aspect-[16/10] bg-muted">
+											<Image
+												src={contribution.image}
+												alt={`Vista de ${contribution.title}`}
+												fill
+												sizes="(max-width: 640px) 100vw, 50vw"
+												className="object-cover object-top"
+											/>
+										</div>
+									)
+								) : null}
 								<CardContent className="p-6 flex-1 flex flex-col">
-									<div className="mb-4 flex flex-wrap items-center gap-2">
-										<GitPullRequest className="h-8 w-8 text-primary" />
-										{contribution.ownProject ? (
-											<Badge variant="default" className="font-semibold">
-												Proyecto propio
-											</Badge>
-										) : null}
-										{contribution.inProgress ? (
-											<Badge variant="secondary" className="font-semibold">
-												En proceso
-											</Badge>
-										) : null}
-									</div>
+									{contribution.ownProject || contribution.inProgress || !contribution.image ? (
+										<div className="mb-4 flex flex-wrap items-center gap-2">
+											{contribution.image ? null : (
+												<GitPullRequest className="h-8 w-8 text-primary" />
+											)}
+											{contribution.ownProject ? (
+												<Badge variant="default" className="font-semibold">
+													Proyecto propio
+												</Badge>
+											) : null}
+											{contribution.inProgress ? (
+												<Badge variant="secondary" className="font-semibold">
+													En proceso
+												</Badge>
+											) : null}
+										</div>
+									) : null}
 									<h3 className="text-lg font-bold mb-2">{contribution.title}</h3>
+									{contribution.client ? (
+										<p className="text-sm font-medium mb-2">
+											Trabajo para {contribution.client}
+										</p>
+									) : null}
 									<p className="text-sm text-muted-foreground flex-1">{contribution.description}</p>
 									<div className="flex flex-wrap gap-1 mt-4">
 										{contribution.tags.map((tag) => (

@@ -165,6 +165,9 @@ export function CVPdfDocument() {
 						<View key={p.title} wrap={false}>
 							{p.ownProject ? <Text style={styles.ownNote}>Proyecto propio</Text> : null}
 							<Text style={styles.projectTitle}>{p.title}</Text>
+							{p.client ? (
+								<Text style={styles.ownNote}>Trabajo para {p.client}</Text>
+							) : null}
 							<Text style={styles.projectDesc}>{p.description}</Text>
 							<View style={styles.tagsRow}>
 								{p.tags.map((t) => (
