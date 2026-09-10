@@ -1,74 +1,60 @@
 export const cvPersonal = {
 	fullName: "Pablo Palacios",
-	heroPhrases: [
-		"Desarrollador Web",
-		"Frontend moderno con foco en UI",
-		"Integración con APIs y servicios backend",
-	],
+	heroRole: "Estudiante de 2.º de Desarrollo de Aplicaciones Multiplataforma",
+	heroLead:
+		"Desarrollo proyectos web reales mientras continúo formándome como desarrollador.",
+	heroSeeking: "Actualmente busco empresa para realizar mis prácticas de DAM.",
 	location: "Gandia, Valencia, España",
 	mapsUrl: "https://maps.google.com/?q=Gandia,Valencia,España",
+	email: "pablopadev@gmail.com",
+	websiteUrl: "https://pablopadev.com",
+	websiteDisplay: "pablopadev.com",
 	linkedinUrl: "https://www.linkedin.com/in/pablo-palacios-vicens-0750aa3a2",
 	whatsappUrl: "https://wa.me/34657285571",
 	whatsappDisplay: "+34 657 285 571",
 } as const
 
-export type ExpertiseFeatureId = "frontend" | "uiux" | "backend" | "learning"
-
-export const expertiseFeatures: {
-	id: ExpertiseFeatureId
-	title: string
-	description: string
-}[] = [
-	{
-		id: "frontend",
-		title: "Frontend Development",
-		description: "Experiencia en JavaScript, Next.js, React.js y Tailwind CSS",
-	},
-	{
-		id: "uiux",
-		title: "UI & UX Design",
-		description: "Diseño de interfaces limpias, accesibles y con coherencia visual",
-	},
-	{
-		id: "backend",
-		title: "Backend Development",
-		description: "Desarrollo de APIs y servicios backend con Node.js, flask, django y RESTful APIs",
-	},
-	{
-		id: "learning",
-		title: "Siempre aprendiendo",
-		description:
-			"Siempre buscando nuevas tecnologías y herramientas para mejorar mis habilidades y crear proyectos útiles",
-	},
-]
-
 export const aboutIntroPrimary =
-	"Desarrollador Web formado en Desarrollo de Aplicaciones Multiplataforma (DAM), con especialización en frontend moderno. Trabajo principalmente con React, Next.js y Tailwind CSS para crear interfaces limpias, accesibles y responsive, cuidando tanto el diseño como la estructura del código."
+	"Estoy cursando 2.º de Desarrollo de Aplicaciones Multiplataforma (DAM) en el IES Jaume II el Just. He desarrollado un proyecto personal publicado en producción y webs para clientes reales."
 
 export const aboutIntroSecondary =
-	"Me gusta construir proyectos reales y demos funcionales que conectan frontend con APIs y servicios backend, aplicando los fundamentos aprendidos en DAM: programación, lógica, arquitectura cliente-servidor y buenas prácticas. Actualmente continúo ampliando mis conocimientos en desarrollo full-stack y automatización, con el objetivo de crear aplicaciones útiles, mantenibles y bien pensadas desde el punto de vista del usuario y del producto."
+	"Busco una empresa donde hacer las prácticas de DAM: entrar en un equipo profesional, aportar en lo que pueda y ganar experiencia real."
 
 export const skillCategories: { category: string; skills: string[] }[] = [
 	{
-		category: "Frontend",
-		skills: ["JavaScript", "TypeScript", "React.js", "HTML/CSS", "Tailwind CSS"],
+		category: "Formación DAM",
+		skills: [
+			"Java",
+			"SQL",
+			"SQLite / bases de datos relacionales",
+			"HTML",
+			"CSS",
+			"JavaScript",
+			"Git",
+			"JSON",
+			"XML",
+		],
 	},
 	{
-		category: "Backend",
-		skills: ["Node.js", "flask", "django", "Express.js", "RESTful APIs"],
-	},
-	{
-		category: "Database",
-		skills: ["MySQL", "PostgreSQL", "MongoDB"],
-	},
-	{
-		category: "Tools & Methodologies",
-		skills: ["Git", "GitHub", "Docker", "Figma"],
+		category: "Tecnologías utilizadas en proyectos",
+		skills: [
+			"TypeScript",
+			"React",
+			"Next.js",
+			"Supabase",
+			"PostgreSQL",
+			"Tailwind CSS",
+			"Vercel",
+			"Docker",
+			"APIs REST",
+		],
 	},
 ]
 
+export const skillsSectionTitle = "Tecnologías"
+
 export const skillsSectionSubtitle =
-	"Tecnologías y herramientas que utilizo en mis proyectos"
+	"Tecnologías con las que he trabajado en clase y en proyectos. No implica dominio de todas."
 
 export type ProjectEntry = {
 	title: string
@@ -79,36 +65,42 @@ export type ProjectEntry = {
 	visitLabel?: string
 	client?: string
 	ownProject?: boolean
+	freelance?: boolean
 	inProgress?: boolean
+	featured?: boolean
 }
 
 export const projects: ProjectEntry[] = [
 	{
-		title: "Web Volta-Athletics",
+		title: "PlayNotes",
 		description:
-			"Tienda online de café de especialidad en Gandia. Plataforma e-commerce desarrollada con tecnologías modernas para mostrar productos premium, gestionar pedidos y conectar con la comunidad de amantes del café y el deporte.",
-		tags: ["E-commerce", "Next.js", "React", "Tailwind CSS"],
-		url: "https://www.voltaathletics.es/",
-		image: "/projects/volta-athletics.jpg",
-	},
-	{
-		title: "Playnotes.es",
-		description:
-			"Web y app para reseñar videojuegos, montar tu biblioteca personal y crear listas: seguimiento de lo que juegas, valoraciones y descubrimiento organizado.",
-		tags: ["Videojuegos", "Reseñas", "Biblioteca", "Listas"],
+			"Aplicación web de videojuegos desarrollada y mantenida como proyecto personal, actualmente publicada en producción. Trabajo con Next.js, React, TypeScript, Supabase/PostgreSQL, APIs externas, autenticación y despliegue en Vercel. He participado en el desarrollo de funcionalidades, estructura de datos, integraciones, resolución de errores y mantenimiento.",
+		tags: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
 		url: "https://www.playnotes.es/",
 		image: "/projects/playnotes.jpg",
 		ownProject: true,
+		featured: true,
 	},
 	{
-		title: "Web Endurance Trainer",
+		title: "Endurance3",
 		description:
-			"Plataforma web para entrenamiento de resistencia y seguimiento de rendimiento deportivo. Sistema completo para planificar rutinas, registrar entrenamientos y analizar progreso con métricas avanzadas.",
-		tags: ["Next.js", "React", "Deportes", "Fitness"],
+			"Web desarrollada para Carlos Cabrera, entrenador multidisciplinar. Proyecto freelance para un cliente real, publicado en producción.",
+		tags: ["Next.js", "React", "Tailwind CSS"],
 		url: "https://www.endurance3.es/",
 		image: "/projects/endurance3.jpg",
 		visitLabel: "Endurance3",
 		client: "Carlos Cabrera, entrenador multidisciplinar",
+		freelance: true,
+	},
+	{
+		title: "VOLTA",
+		description:
+			"Web freelance para un cliente real: tienda de café de especialidad en Gandia, publicada en producción.",
+		tags: ["Next.js", "React", "Tailwind CSS"],
+		url: "https://www.voltaathletics.es/",
+		image: "/projects/volta-athletics.jpg",
+		visitLabel: "VOLTA",
+		freelance: true,
 	},
 	{
 		title: "Ciclo-Activa",
@@ -119,24 +111,24 @@ export const projects: ProjectEntry[] = [
 	},
 ]
 
-export const projectsSectionTitle = "Webs y proyectos personales"
+export const projectsSectionTitle = "Proyectos"
 
 export const projectsIntroBefore =
-	"Desde webs para empresas hasta proyectos personales donde aplico mis habilidades y conocimientos."
+	"Proyecto personal en producción y trabajos freelance para clientes reales."
 
-export const projectsIntroHighlight = "Playnotes.es es mi proyecto propio"
+export const projectsIntroHighlight = "PlayNotes es mi proyecto principal"
 
 export const projectsIntroAfter =
-	": producto que ideé y desarrollo de principio a fin, y del que más orgulloso estoy."
+	": lo desarrollo y mantengo de principio a fin."
 
-export const contactSectionTitle = "Contactame"
+export const contactSectionTitle = "Contacto"
 
 export const contactSectionSubtitle =
-	"¿Tienes un proyecto en mente o encajo en tus proyectos? ¡Hablemos sobre ello!"
+	"Busco empresa para prácticas de DAM. Puedes escribirme por email, WhatsApp o LinkedIn."
 
 export const contactLocationTitle = "Ubicación"
 
-export const contactConnectTitle = "Conecta conmigo"
+export const contactConnectTitle = "También en"
 
 export const contactConnectSubtitle =
-	"Encuéntrame en LinkedIn o escríbeme por WhatsApp."
+	"LinkedIn y WhatsApp."

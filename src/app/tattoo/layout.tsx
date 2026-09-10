@@ -6,6 +6,8 @@ const bodoniDisplay = Bodoni_Moda({
 	variable: "--font-tattoo-display",
 	weight: ["400", "500", "600", "700"],
 	display: "swap",
+	adjustFontFallback: false,
+	fallback: ["Georgia", "Times New Roman", "serif"],
 });
 
 export const metadata: Metadata = {

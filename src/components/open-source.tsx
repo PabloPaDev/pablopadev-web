@@ -20,109 +20,126 @@ function projectVisitLabel({ title, visitLabel }: ProjectEntry): string {
 
 export default function OpenSource() {
 	return (
-		<div id="projects">
-			<div className="space-y-12">
-				<div className="space-y-4 text-center">
-					<h3 className="text-2xl font-bold tracking-tighter sm:text-3xl">{projectsSectionTitle}</h3>
-					<p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed">
-						{projectsIntroBefore}{" "}
-						<span className="text-foreground font-medium">{projectsIntroHighlight}</span>
-						{projectsIntroAfter}
-					</p>
-				</div>
+		<section id="projects" className="py-20 bg-background">
+			<div className="container px-4 md:px-6">
+				<div className="space-y-12">
+					<div className="space-y-4 text-center">
+						<h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{projectsSectionTitle}</h2>
+						<p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed">
+							{projectsIntroBefore}{" "}
+							<span className="text-foreground font-medium">{projectsIntroHighlight}</span>
+							{projectsIntroAfter}
+						</p>
+					</div>
 
-				<div className="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2">
-					{projects.map((contribution) => (
-						<div key={contribution.title}>
-							<Card
-								className={cn(
-									"h-full flex flex-col overflow-hidden",
-									contribution.ownProject &&
-										"border-2 border-primary shadow-md ring-1 ring-primary/20"
-								)}
+					<div className="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2">
+						{projects.map((contribution) => (
+							<div
+								key={contribution.title}
+								className={cn(contribution.featured && "sm:col-span-2")}
 							>
-								{contribution.image ? (
-									contribution.url ? (
-										<a
-											href={contribution.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="relative block aspect-[16/10] bg-muted"
-										>
-											<Image
-												src={contribution.image}
-												alt={`Vista de ${contribution.title}`}
-												fill
-												sizes="(max-width: 640px) 100vw, 50vw"
-												className="object-cover object-top"
-											/>
-											<span className="sr-only">
-												Abrir {projectVisitLabel(contribution)} en una pestaña nueva
-											</span>
-										</a>
-									) : (
-										<div className="relative aspect-[16/10] bg-muted">
-											<Image
-												src={contribution.image}
-												alt={`Vista de ${contribution.title}`}
-												fill
-												sizes="(max-width: 640px) 100vw, 50vw"
-												className="object-cover object-top"
-											/>
-										</div>
-									)
-								) : null}
-								<CardContent className="p-6 flex-1 flex flex-col">
-									{contribution.ownProject || contribution.inProgress || !contribution.image ? (
-										<div className="mb-4 flex flex-wrap items-center gap-2">
-											{contribution.image ? null : (
-												<GitPullRequest className="h-8 w-8 text-primary" />
-											)}
-											{contribution.ownProject ? (
-												<Badge variant="default" className="font-semibold">
-													Proyecto propio
-												</Badge>
-											) : null}
-											{contribution.inProgress ? (
-												<Badge variant="secondary" className="font-semibold">
-													En proceso
-												</Badge>
-											) : null}
-										</div>
-									) : null}
-									<h3 className="text-lg font-bold mb-2">{contribution.title}</h3>
-									{contribution.client ? (
-										<p className="text-sm font-medium mb-2">
-											Trabajo para {contribution.client}
-										</p>
-									) : null}
-									<p className="text-sm text-muted-foreground flex-1">{contribution.description}</p>
-									<div className="flex flex-wrap gap-1 mt-4">
-										{contribution.tags.map((tag) => (
-											<span key={tag} className="text-xs bg-primary/10 px-2 py-1 rounded-full">
-												{tag}
-											</span>
-										))}
-									</div>
-									{contribution.url ? (
-										<Button variant="outline" size="sm" className="mt-4 w-full" asChild>
+								<Card
+									className={cn(
+										"h-full flex flex-col overflow-hidden",
+										contribution.ownProject &&
+											"border-2 border-primary shadow-md ring-1 ring-primary/20"
+									)}
+								>
+									{contribution.image ? (
+										contribution.url ? (
 											<a
 												href={contribution.url}
 												target="_blank"
 												rel="noopener noreferrer"
+												className="relative block aspect-[16/10] bg-muted"
 											>
-												Visitar {projectVisitLabel(contribution)}
-												<ExternalLink aria-hidden />
-												<span className="sr-only">(abre en nueva pestaña)</span>
+												<Image
+													src={contribution.image}
+													alt={`Vista de ${contribution.title}`}
+													fill
+													sizes={
+														contribution.featured
+															? "(max-width: 640px) 100vw, 100vw"
+															: "(max-width: 640px) 100vw, 50vw"
+													}
+													className="object-cover object-top"
+												/>
+												<span className="sr-only">
+													Abrir {projectVisitLabel(contribution)} en una pestaña nueva
+												</span>
 											</a>
-										</Button>
+										) : (
+											<div className="relative aspect-[16/10] bg-muted">
+												<Image
+													src={contribution.image}
+													alt={`Vista de ${contribution.title}`}
+													fill
+													sizes="(max-width: 640px) 100vw, 50vw"
+													className="object-cover object-top"
+												/>
+											</div>
+										)
 									) : null}
-								</CardContent>
-							</Card>
-						</div>
-					))}
+									<CardContent className="p-6 flex-1 flex flex-col">
+										{contribution.ownProject ||
+										contribution.freelance ||
+										contribution.inProgress ||
+										!contribution.image ? (
+											<div className="mb-4 flex flex-wrap items-center gap-2">
+												{contribution.image ? null : (
+													<GitPullRequest className="h-8 w-8 text-primary" />
+												)}
+												{contribution.ownProject ? (
+													<Badge variant="default" className="font-semibold">
+														Proyecto propio
+													</Badge>
+												) : null}
+												{contribution.freelance ? (
+													<Badge variant="secondary" className="font-semibold">
+														Freelance
+													</Badge>
+												) : null}
+												{contribution.inProgress ? (
+													<Badge variant="secondary" className="font-semibold">
+														En proceso
+													</Badge>
+												) : null}
+											</div>
+										) : null}
+										<h3 className="text-lg font-bold mb-2">{contribution.title}</h3>
+										{contribution.client ? (
+											<p className="text-sm font-medium mb-2">
+												Trabajo para {contribution.client}
+											</p>
+										) : null}
+										<p className="text-sm text-muted-foreground flex-1">{contribution.description}</p>
+										<div className="flex flex-wrap gap-1 mt-4">
+											{contribution.tags.map((tag) => (
+												<span key={tag} className="text-xs bg-primary/10 px-2 py-1 rounded-full">
+													{tag}
+												</span>
+											))}
+										</div>
+										{contribution.url ? (
+											<Button variant="outline" size="sm" className="mt-4 w-full" asChild>
+												<a
+													href={contribution.url}
+													target="_blank"
+													rel="noopener noreferrer"
+												>
+													Visitar {projectVisitLabel(contribution)}
+													<ExternalLink aria-hidden />
+													<span className="sr-only">(abre en nueva pestaña)</span>
+												</a>
+											</Button>
+										) : null}
+									</CardContent>
+								</Card>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }

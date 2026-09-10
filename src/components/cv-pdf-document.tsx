@@ -3,7 +3,6 @@ import {
 	aboutIntroPrimary,
 	aboutIntroSecondary,
 	cvPersonal,
-	expertiseFeatures,
 	projects,
 	skillCategories,
 	skillsSectionSubtitle,
@@ -23,7 +22,7 @@ const styles = StyleSheet.create({
 	headline: {
 		fontSize: 10,
 		color: "#333",
-		marginBottom: 14,
+		marginBottom: 6,
 		lineHeight: 1.4,
 	},
 	section: {
@@ -42,18 +41,6 @@ const styles = StyleSheet.create({
 		lineHeight: 1.45,
 		marginBottom: 6,
 		textAlign: "justify",
-	},
-	featureBlock: {
-		marginBottom: 5,
-	},
-	featureTitle: {
-		fontSize: 9,
-		fontFamily: "Helvetica-Bold",
-	},
-	featureDesc: {
-		fontSize: 8,
-		lineHeight: 1.35,
-		color: "#333",
 	},
 	contactLine: {
 		fontSize: 9,
@@ -110,13 +97,12 @@ const styles = StyleSheet.create({
 })
 
 export function CVPdfDocument() {
-	const headline = cvPersonal.heroPhrases.join(" · ")
-
 	return (
 		<Document title={`CV — ${cvPersonal.fullName}`} author={cvPersonal.fullName} language="es">
 			<Page size="A4" style={styles.page}>
 				<Text style={styles.h1}>{cvPersonal.fullName}</Text>
-				<Text style={styles.headline}>{headline}</Text>
+				<Text style={styles.headline}>{cvPersonal.heroRole}</Text>
+				<Text style={styles.headline}>{cvPersonal.heroSeeking}</Text>
 
 				<View style={styles.section}>
 					<Text style={styles.h2}>Perfil</Text>
@@ -125,17 +111,9 @@ export function CVPdfDocument() {
 				</View>
 
 				<View style={styles.section}>
-					<Text style={styles.h2}>Enfoque</Text>
-					{expertiseFeatures.map((f) => (
-						<View key={f.id} style={styles.featureBlock} wrap={false}>
-							<Text style={styles.featureTitle}>{f.title}</Text>
-							<Text style={styles.featureDesc}>{f.description}</Text>
-						</View>
-					))}
-				</View>
-
-				<View style={styles.section}>
 					<Text style={styles.h2}>Contacto</Text>
+					<Text style={styles.contactLine}>Email: {cvPersonal.email}</Text>
+					<Text style={styles.contactLine}>Web: {cvPersonal.websiteUrl}</Text>
 					<Text style={styles.contactLine}>Ubicación: {cvPersonal.location}</Text>
 					<Text style={styles.contactLine}>LinkedIn: {cvPersonal.linkedinUrl}</Text>
 					<Text style={styles.contactLine}>WhatsApp: {cvPersonal.whatsappDisplay}</Text>
@@ -149,7 +127,7 @@ export function CVPdfDocument() {
 
 			<Page size="A4" style={styles.page}>
 				<View style={styles.section}>
-					<Text style={styles.h2}>Habilidades técnicas</Text>
+					<Text style={styles.h2}>Tecnologías</Text>
 					<Text style={styles.paragraph}>{skillsSectionSubtitle}</Text>
 					{skillCategories.map((cat) => (
 						<View key={cat.category}>
@@ -164,6 +142,7 @@ export function CVPdfDocument() {
 					{projects.map((p) => (
 						<View key={p.title} wrap={false}>
 							{p.ownProject ? <Text style={styles.ownNote}>Proyecto propio</Text> : null}
+							{p.freelance ? <Text style={styles.ownNote}>Freelance</Text> : null}
 							<Text style={styles.projectTitle}>{p.title}</Text>
 							{p.client ? (
 								<Text style={styles.ownNote}>Trabajo para {p.client}</Text>
