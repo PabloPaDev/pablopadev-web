@@ -8,6 +8,9 @@ const config: Config = {
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
+		container: {
+			center: true,
+		},
     	extend: {
     		fontFamily: {
     			tattoo: ["var(--font-tattoo-display)", "Georgia", "Times New Roman", "serif"],
