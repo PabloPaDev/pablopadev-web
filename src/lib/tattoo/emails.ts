@@ -7,7 +7,11 @@ import type {
 	Client,
 } from "@/lib/tattoo/panel/types";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+	const apiKey = process.env.RESEND_API_KEY;
+	if (!apiKey) return null;
+	return new Resend(apiKey);
+}
 
 export type TattooEmailSendResult = {
 	recipient_email: string;
@@ -42,7 +46,8 @@ async function sendTattooEmail(
 	params: SendTattooEmailParams
 ): Promise<{ success: boolean; error?: string }> {
 	const from = process.env.TATTOO_FROM_EMAIL;
-	if (!process.env.RESEND_API_KEY) {
+	const resend = getResend();
+	if (!resend) {
 		return { success: false, error: "RESEND_API_KEY no configurada" };
 	}
 	if (!from) {
